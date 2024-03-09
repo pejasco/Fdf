@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/09 01:47:51 by chuleung         ###   ########.fr       */
+/*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
+/*   Updated: 2024/03/09 01:38:06 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "libft.h"
-# include "mlx.h"
-# include <math.h>
-
-typedef struct s_4x4_mtx
-{
-    float mtx[4][4];
-} t_4x4_mtx;
+#include "fdf.h"
 
 
-#endif
+
