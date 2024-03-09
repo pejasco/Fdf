@@ -6,11 +6,15 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 01:41:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/09 18:07:27 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/09 23:56:15 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+//an image is like a buffer
+
+
 
 /*
 int deal_key(int key, void *param)
@@ -20,6 +24,9 @@ int deal_key(int key, void *param)
     return (0);
 }
 */
+
+
+
 int handle_input(int key, t_mlx_data *data)
 {
     if (key == XK_Escape)
@@ -41,9 +48,11 @@ int main()
     data.mlx_ptr = mlx_init();
     data.win_ptr = mlx_new_window(data.mlx_ptr, 500, 500, "diu");
     mlx_pixel_put(data.mlx_ptr, data.win_ptr, 250, 250, 0xABCABC);
-    mlx_key_hook(data.win_ptr, handle_input, &data);
+    //mlx_key_hook(data.win_ptr, handle_input, &data);
     //mlx_key_hook(config.win_ptr, deal_key, &config);
-    mlx_loop(data.mlx_ptr);
+    //mlx_mouse_hook
+    
+    mlx_loop_hook(data.mlx_ptr);
 }
 
 
