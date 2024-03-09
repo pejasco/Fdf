@@ -6,21 +6,28 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 01:41:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/09 02:05:39 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/09 03:06:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+int deal_key(int key, void *param)
+{
+    ft_printf("Key entered: %d", &key);
+    mlx_pixel_put(((t_lm *) param)->mlx_ptr, ((t_lm *) param)->win_ptr, 250, 250, 0xFFFFFF);
+    return (0);
+}
+
 int main()
 {
-    void *mlx_ptr;
-    void *win_ptr;
+    t_lm config;
 
-    mlx_ptr = mlx_init();
-    win_ptr = mlx_new_window(mlx_ptr, 500, 500, "diu");
-    mix_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
-    mlx_loop(mlx_ptr);
+    config.mlx_ptr = mlx_init();
+    config.win_ptr = mlx_new_window(config.mlx_ptr, 500, 500, "diu");
+    mlx_key_hook(config.win_ptr, deal_key, &config);
+    mlx_loop(config.mlx_ptr);
 }
 
 
