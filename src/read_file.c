@@ -6,12 +6,11 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/11 21:44:55 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/11 21:56:04 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
 
 int find_wid(int fd)
 {
@@ -76,7 +75,7 @@ int find_len(int fd, int width)
 	}
 	return (length)
 }
-*/
+
 
 int read_file(char *file_name)
 {
@@ -113,7 +112,8 @@ int main(int ac, char **av)
 	return (0);
 }
 
-/*#include <fcntl.h>
+/*
+#include <fcntl.h>
 #include <stdio.h>
 
 int main(void) {
@@ -135,14 +135,3 @@ int main(void) {
 	return 0;
 }
 */
- 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202 1,0x810202
-
-
-
-
-1,0x810202
-
-1,0x810202
-1,0x810202
-1,0x810202
-1,0x810202
