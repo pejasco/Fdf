@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:00:04 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/08 23:24:43 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:23:18 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,5 @@ int		ft_print_s(char *str);
 int		ft_print_d(long n, int base, char spec);
 
 int		ft_print_p(void *p);
-
-//Libft:
-//ft_putstr
-//ft_strchr
 
 #endif
