@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/12 13:49:22 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:16:37 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,19 @@ int find_comma(char *str)
   return (0);
 }
 
-char  
+void free_all(char **strs)
+{
+  int   i;
+  int   j;
+
+  i = 0;
+  while(strs[i])
+  {
+    free(strs[i]);
+    i++;
+  }
+  free(strs);
+}
 
 
 
