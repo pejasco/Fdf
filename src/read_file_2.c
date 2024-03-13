@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:58:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/12 23:45:00 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/13 22:21:41 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,69 @@ int		whether_colors(char *char_strs)
 	return (0);
 }
 
-void	fill_white_for_zero(char *colors_c_arr)
+void	fill_white_for_zero(char **colors_c_arr)
 {
 	int		i;
 	int		len;
 
 	i = 0;
 	len = 8;
-	colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
-	ft_strlcpy(colors_c_arr, "0x000000", len + 1);
+	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
+	if (*colors_c_arr == 0)
+		return ;
+	ft_strlcpy(*colors_c_arr, "0x000000", len + 1);
 }
 
+void	extract_RGB(char *char_str, char **colors_c_arr)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		len;
 
+	i = 0;
+	j = i + 1;
+	k = 0;
+	len = 8;
+	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
+	if (*colors_c_arr == 0)
+		return ;
+	while (char_str[i] != '0' && char_str[j] != 'x')
+		i++;
+	while (char_str[i])
+	{
+		*colors_c_arr[k] = char_str[i];
+		k++;
+		i++;
+	}
+	*colors_c_arr[k] = '\0';
+}
+
+int	check_str_len_for_height(char *char_str)
+{
+	int		i;
+
+	i = 0;
+	while (char_str[i] && char_str[i] != ',') 	
+		i++;
+	return (i);
+}
+
+void	extract_RGB(char *char_str, char **colors_c_arr)
+{
+	int		i;
+	int		len;
+
+	i = 0;
+	len = check_str_len_for_height(char_str);
+	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
+	{
+		*colors_c_arr[i] = char_str[i];
+		i++;
+	}
+	*colors_c_arr[i] = '\0';
+}
 
 void	extract_colors(char *char_str, char *colors_c_arr, int whether_color)
 {
@@ -128,7 +179,7 @@ char	**create_colors_c_arrs(char **char_strs, int nbr_of_items)
 	return(colors_c_arrs);
 }
 
-int **create_val_c_arrs(char **char_strs, int nbr_of_items)
+char **create_val_c_arrs(char **char_strs, int nbr_of_items)
 {
 	char	**data_c_arrs;
 
@@ -144,7 +195,11 @@ int **create_val_c_arrs(char **char_strs, int nbr_of_items)
 
 
 
-int ft_len(int fd, int width)
+
+
+
+
+int **create_int_str(int fd, int width)
 {
 	char    *line;
 	char    **char_strs;
@@ -172,4 +227,27 @@ int ft_len(int fd, int width)
 	}
 
 
+}
+
+int		main(int ac, char **av)
+{
+	int		fd;
+	int		wid;
+	int		
+
+	fd 
+	wid = 
+
+	if ((fd = read_file(av[1])) == -1)
+		return (1);
+	if (ac == 2)
+	{
+		input_mgt(fd);
+		
+
+
+
+		return (1);
+	}
+	return (0);
 }

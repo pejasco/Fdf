@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/10 21:31:27 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/13 23:50:02 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <X11/keysym.h>
+
+typedef struct s_int_strs
+{
+    int     **rgb_strs;
+    int     **values_strs;
+}   t_int_strs;
+
 
 typedef struct s_mlx_data
 {
