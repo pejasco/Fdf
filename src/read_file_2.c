@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:58:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/13 22:21:41 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/14 13:17:50 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,27 +227,4 @@ int **create_int_str(int fd, int width)
 	}
 
 
-}
-
-int		main(int ac, char **av)
-{
-	int		fd;
-	int		wid;
-	int		
-
-	fd 
-	wid = 
-
-	if ((fd = read_file(av[1])) == -1)
-		return (1);
-	if (ac == 2)
-	{
-		input_mgt(fd);
-		
-
-
-
-		return (1);
-	}
-	return (0);
 }

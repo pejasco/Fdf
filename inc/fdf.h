@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/13 23:50:02 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:52:05 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@
 # include <fcntl.h>
 # include <X11/keysym.h>
 
+typedef enum e_mode
+{
+    With_Color,
+    Without_Color,
+}   t_mode;
+
 typedef struct s_int_strs
 {
     int     **rgb_strs;
     int     **values_strs;
+    int     wid;
 }   t_int_strs;
 
 
@@ -53,5 +60,7 @@ typedef struct s_4x4_mtx
 {
     float mtx[4][4];
 } t_4x4_mtx;
+
+void free_all(char **strs);
 
 #endif
