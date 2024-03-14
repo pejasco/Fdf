@@ -6,21 +6,11 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:58:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/14 13:17:50 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/14 23:21:30 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int		count_item(char *arry)
-{
-	int i;
-
-	i = 0;
-	while (arry[i])
-		i++;
-	return (i);
-}
 
 int		whether_colors(char *char_strs)
 {

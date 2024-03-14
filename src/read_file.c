@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/14 19:11:23 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/14 22:11:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,57 @@ wefwef
 
 }
 
-int	*create_values_str_w_col(char *all_lines)
+char	**modify_strs_w_col_rgb(char **str_before_atoi, int len)
 {
-	
+	int		i;
+	char	**strs_aft_modi;
+
+	i = 0;
+	strs_aft_modi = (char **)malloc(sizeof(char *) * (len + 1));
+	strs_aft_modi[len] = NULL;
+	while(str_before_atoi[i])
+	{
+		str_before_atoi[i] = 
+		
 
 
-
-
+	}
+	free(str_before_atoi);
+	return(strs_aft_modi);
 }
 
-void create_process(int **ptrs_to_values_str, 
+
+
+char	**modify_strs_w_col_val(char **str_before_atoi, int len)
+{
+	char	**strs_aft_modi;
+
+	strs_aft_modi = (char **)malloc(sizeof(char *) * (len + 1));
+
+
+
+	free(str_before_atoi);
+	return(strs_aft_modi);
+}
+
+int	*create_values_str_w_col(char *all_lines)
+{
+	char	**strs_before_atoi;
+	int		*values_str;
+	int		len;
+
+	len = 0;
+	strs_before_atoi = ft_split(all_lines, ' ');
+	while (strs_before_atoi[len])
+		len++;
+	
+	values_str = NULL;
+	creation_process(&values_str, strs_before_atoi, len);
+	free_all(strs_before_atoi);
+	return(values_str);
+}
+
+void creation_process(int **ptrs_to_values_str, 
 	char **strs_before_atoi, int len)
 {
 	int		j;
@@ -47,34 +88,21 @@ void create_process(int **ptrs_to_values_str,
 		temp = ft_atoi(strs_before_atoi[j++]);
 		*ptrs_to_values_str[k++] = temp;
 	}
-
-
-
 }
-
-
 
 int	*create_values_str_no_col(char *all_lines)
 {
 	char	**strs_before_atoi;
 	int		*values_str;
-	int		temp;
-	int		j;
-	int		k;
 	int		len;
 
-	j = 0; k = 0; len = 0;
+	len = 0;
 	strs_before_atoi = ft_split(all_lines, ' ');
 	while (strs_before_atoi[len])
 		len++;
-	values_str = (int *)malloc(sizeof(int) * (len + 1));
-	values_str[k++] = len;
-	while(strs_before_atoi[j])
-	{
-		temp = ft_atoi(strs_before_atoi[j++]);
-		values_str[k++] = temp;
-	}
-	free(strs_before_atoi);
+	values_str = NULL;
+	creation_process(&values_str, strs_before_atoi, len);
+	free_all(strs_before_atoi);
 	return(values_str);
 }
 
@@ -86,25 +114,23 @@ int	**get_values_strs(char **all_lines, t_mode mode, int width)
 	i = 0;
 	strs = (int **)malloc(sizeof(int *) * (width + 1));
 	strs[width] = '\0';
-	if (mode == Without_Color);
+	if (mode == Without_Color)
 	{
 		while (all_lines[i]);	
 		{
-			create_values_strs(all_lines[i], mode, width)
-
+			strs[i] = create_values_str_no_col(all_lines[i]);
 			i++;
 		}
 	}
 	else if (mode == With_Color)
 	{
-
-
-
-
-
-
+		while (all_lines[i]);	
+		{
+			strs[i] = create_values_str_no_col(all_lines[i]);
+			i++;
+		}
 	}
-
+	return (strs);
 }
 
 
@@ -115,7 +141,7 @@ t_int_strs	**get_strs(char **all_lines, t_mode mode, int width)
 	if (mode == Without_Color)
 	{
 		strs.rgb_strs = NULL;
-		strs.values_strs = get_values_strs(all_lines, mode, width);
+		strs.values_strs = get_values_strs(all_lines, Without_Color, width);
 	}
 	else if (mode == With_Color)
 	{
