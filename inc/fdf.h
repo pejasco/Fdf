@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/14 17:52:05 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/14 23:22:13 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef enum e_mode
     With_Color,
     Without_Color,
 }   t_mode;
+
+typedef enum e_mode2
+{
+    With_Color,
+    Without_Color,
+}   t_mode2;
 
 typedef struct s_int_strs
 {
