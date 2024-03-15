@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:58:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/14 23:21:30 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:57:08 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	fill_white_for_zero(char **colors_c_arr)
 	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (*colors_c_arr == 0)
 		return ;
-	ft_strlcpy(*colors_c_arr, "0x000000", len + 1);
+	ft_strlcpy(*colors_c_arr, "0xFFFFFF", len + 1);
 }
 
-void	extract_RGB(char *char_str, char **colors_c_arr)
+void	extract_RGB(char *str_before_atoi ,char **colors_c_arr)
 {
 	int		i;
 	int		j;
@@ -51,16 +51,12 @@ void	extract_RGB(char *char_str, char **colors_c_arr)
 	k = 0;
 	len = 8;
 	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (*colors_c_arr == 0)
+	if (*colors_c_arr == NULL)
 		return ;
-	while (char_str[i] != '0' && char_str[j] != 'x')
+	while (str_before_atoi[i] != '0' && str_before_atoi[j] != 'x')
 		i++;
-	while (char_str[i])
-	{
-		*colors_c_arr[k] = char_str[i];
-		k++;
-		i++;
-	}
+	while (str_before_atoi[i])
+		*colors_c_arr[k++] = str_before_atoi[i++];
 	*colors_c_arr[k] = '\0';
 }
 
@@ -74,21 +70,6 @@ int	check_str_len_for_height(char *char_str)
 	return (i);
 }
 
-void	extract_RGB(char *char_str, char **colors_c_arr)
-{
-	int		i;
-	int		len;
-
-	i = 0;
-	len = check_str_len_for_height(char_str);
-	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
-	while (i < len)
-	{
-		*colors_c_arr[i] = char_str[i];
-		i++;
-	}
-	*colors_c_arr[i] = '\0';
-}
 
 void	extract_colors(char *char_str, char *colors_c_arr, int whether_color)
 {

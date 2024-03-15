@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/14 23:22:13 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/15 12:00:28 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,11 @@ typedef struct s_4x4_mtx
 } t_4x4_mtx;
 
 void free_all(char **strs);
+
+void	fill_white_for_zero(char **colors_c_arr);
+
+void	extract_RGB(char *char_str, char **colors_c_arr);
+
+int	check_str_len_for_height(char *char_str);
 
 #endif
