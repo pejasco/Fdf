@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:58:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/15 17:57:08 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:50:21 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fill_white_for_zero(char **colors_c_arr)
 	i = 0;
 	len = 8;
 	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (*colors_c_arr == 0)
+	if (!(whether_colors(*colors_c_arr)))
 		return ;
 	ft_strlcpy(*colors_c_arr, "0xFFFFFF", len + 1);
 }
