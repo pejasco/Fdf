@@ -6,11 +6,41 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:24:21 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/15 19:30:28 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:20:35 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	check_str_len_for_height(char *char_str)
+{
+	int		i;
+
+	i = 0;
+	while (char_str[i] && char_str[i] != ',') 	
+		i++;
+	return (i);
+}
+
+char	*create_str_w_col_val(char *str_before_atoi)
+{
+	int		j;
+	int		len;
+	char	*str_aft_modi;
+
+	j = 0;
+	len = check_str_len_for_height(str_before_atoi);
+	str_aft_modi = (char *)malloc(sizeof(char) * (len + 1));
+	if (str_aft_modi == NULL)
+		return NULL;
+	str_aft_modi[len] = '\0';
+	while (j < len)
+	{
+		str_aft_modi[j] = str_before_atoi[j];
+		j++;
+	}
+	return (str_aft_modi);
+}
 
 char	**modify_strs_w_col_val(char **str_before_atoi, int len)
 {
@@ -29,7 +59,6 @@ char	**modify_strs_w_col_val(char **str_before_atoi, int len)
 		strs_aft_modi[i] = create_str_w_col_val(str_before_atoi[i]);
 		i++;
 	}
-	free_all(str_before_atoi);
 	return(strs_aft_modi);
 }
 

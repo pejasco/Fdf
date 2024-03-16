@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/15 19:27:57 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/16 22:39:23 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int read_file(char *file_name)
 {
 	int     fd;
-	char    *line;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -69,7 +68,11 @@ int	main(int ac, char **av)
 	int		wid;
 	char	**all_lines;
 	t_int_strs	*strs;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	fd = 0;
 	wid = 0;
 	all_lines = NULL;
@@ -78,14 +81,29 @@ int	main(int ac, char **av)
 	wid = find_wid(fd);
 	all_lines = extract_line(fd, wid);
 	strs = input_mgt(all_lines, wid);
-
-
-
-
-
-
-
-
+	while (strs->values_strs[i])
+	{
+		while (j < strs->values_strs[i][0])
+		{
+			ft_printf("%d,", strs->values_strs[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+	if (strs->rgb_strs != NULL)
+	{
+		while (strs->rgb_strs[i])
+		{
+			while (j < strs->rgb_strs[i][0])
+			{
+				ft_printf("%d,", strs->values_strs[i][j]);
+				j++;
+			}
+			ft_printf("\n");
+			i++;
+		}
+	}
 	return (0);
 }
 

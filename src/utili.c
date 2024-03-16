@@ -6,30 +6,15 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/13 23:50:05 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/16 22:57:15 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int find_comma(char *str)
-{
-  int   i;
-
-  i = 0;
-  while (str[i])
-  { 
-    if (str[i] == ',')
-      return (1);
-    i++;
-  }
-  return (0);
-}
-
 void free_all(char **strs)
 {
   int   i;
-  int   j;
 
   i = 0;
   while(strs[i])
@@ -39,9 +24,6 @@ void free_all(char **strs)
   }
   free(strs);
 }
-
-
-
 
 /*
 uint32_t hex2int(char *hex)
