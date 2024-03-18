@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:24:21 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/16 19:20:35 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:16:52 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ char	*create_str_w_col_val(char *str_before_atoi)
 char	**modify_strs_w_col_val(char **str_before_atoi, int len)
 {
 	int		i;
-	int		j;
 	char	**strs_aft_modi;
 
 	i = 0;
-	j = 0;
 	strs_aft_modi = (char **)malloc(sizeof(char *) * (len + 1));
 	if (strs_aft_modi == NULL)
 		return NULL;

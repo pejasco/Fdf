@@ -12,19 +12,18 @@
 
 #include "fdf.h"
 
-t_int_strs	*get_strs(t_int_strs *all_strs, char **all_lines, t_mode mode, int width) 
+void	get_strs(t_int_strs **all_strs, char **all_lines, t_mode mode, int width) 
 {
 	if (mode == Without_Color)
 	{
-		all_strs->rgb_strs = NULL;
-		all_strs->values_strs = get_values_strs(all_lines, mode, width);
+		(*(all_strs))->rgb_strs = NULL;
+		((*all_strs))->values_strs = get_values_strs(all_lines, mode, width);
 	}
 	else if (mode == With_Color)
 	{
-		all_strs->rgb_strs = get_RGB_strs(all_lines, mode);
-		all_strs->values_strs = get_values_strs(all_lines, mode, width);
+		(*(all_strs))->rgb_strs = get_RGB_strs(all_lines, mode);
+		(*(all_strs))->values_strs = get_values_strs(all_lines, mode, width);
 	}
-	return (all_strs);
 }
 
 
@@ -42,14 +41,11 @@ int input_status(char **all_lines)
 	return (0);
 }
 
-t_int_strs *input_mgt(char **all_lines, int wid)
+void input_mgt(t_int_strs *strs,char **all_lines, int wid)
 {
-	t_int_strs	*all_strs;
-
 	if (input_status(all_lines))
-		all_strs = get_strs(all_strs ,all_lines, With_Color, wid);
-	else if (!input_status(all_lines))
-		all_strs = get_strs(all_strs ,all_lines, Without_Color, wid);
+		get_strs(&strs ,all_lines, With_Color, wid);
+	else
+		get_strs(&strs ,all_lines, Without_Color, wid);
 	free_all(all_lines);
-	return (all_strs);
 }

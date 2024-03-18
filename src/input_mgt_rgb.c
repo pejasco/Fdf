@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:54 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/16 22:54:34 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/17 23:12:06 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ void	extract_RGB(char *str_before_atoi ,char **colors_c_arr)
 
 char	*create_str_w_col_rgb(char *str_before_atoi)
 {
-	int		j;
 	char	*str_aft_modi;
 
-	j = 0;
 	if (!whether_colors(str_before_atoi))
 		fill_white_for_zero(&str_aft_modi);
 	else if (whether_colors(str_before_atoi))
@@ -79,7 +77,7 @@ int	*create_color_strs_w_col(char *all_lines)
 	strs_aft_modi = modify_strs_w_col_rgb(strs_before_atoi, len);
 	values_str = NULL;
 	free_all(strs_before_atoi);
-	creation_process(&values_str, strs_aft_modi, len);
+	creation_process_rgb(&values_str, strs_aft_modi, len);
 	free_all(strs_before_atoi);
 	return(values_str);
 }
@@ -93,9 +91,9 @@ int	**get_RGB_strs(char **all_lines, int width)
 	i = 0;
 	strs = (int **)malloc(sizeof(int *) * (width + 1));
 	strs[width] = '\0';
-	while (all_lines[i]);	
+	while (all_lines[i])	
 	{
-			strs[i] = create_color_str_w_col(all_lines[i]);
+			strs[i] = create_color_strs_w_col(all_lines[i]);
 			i++;
 	}
 	return (strs);

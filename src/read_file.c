@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/16 22:39:23 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/17 23:58:03 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int find_wid(int fd)
 		width++;
 		free(line);
 	}
+	printf("find-wid->Width: %d\n", width);
 	return (width);
 }
 
@@ -50,7 +51,7 @@ char	**extract_line(int fd, int wid)
 	i = 0;
 	all_the_lines = (char **)malloc(sizeof(char *) * (wid + 1));
 	all_the_lines[wid] = '\0';
-	while ((line = get_next_line(fd)) != NULL)
+	while ((line = get_next_line(fd)))
 	{
 		len = ft_strlen(line);
 		all_the_lines[i] = malloc(sizeof(char) * (len + 1));
@@ -58,16 +59,15 @@ char	**extract_line(int fd, int wid)
 		i++;
 		free(line);
 	}
-	close(fd);
 	return (all_the_lines);
 }
 
 int	main(int ac, char **av)
 {
-	int		fd;
-	int		wid;
-	char	**all_lines;
-	t_int_strs	*strs;
+	int			fd;
+	int			wid;
+	char		**all_lines;
+	t_int_strs	all_strs;
 	int		i;
 	int		j;
 
@@ -79,31 +79,37 @@ int	main(int ac, char **av)
 	if (ac != 2 || ((fd = read_file(av[1])) == -1))
 		return (1);
 	wid = find_wid(fd);
+	close(fd);
+	if ((fd = read_file(av[1])) == -1)
+    	return (1);
 	all_lines = extract_line(fd, wid);
-	strs = input_mgt(all_lines, wid);
-	while (strs->values_strs[i])
+	input_mgt(&all_strs, all_lines, wid);
+	while (all_strs.values_strs[i])
 	{
-		while (j < strs->values_strs[i][0])
+		j = 0;
+		while (j < all_strs.values_strs[i][0] + 1)
 		{
-			ft_printf("%d,", strs->values_strs[i][j]);
+			ft_printf("%d,", all_strs.values_strs[i][j]);
 			j++;
 		}
 		ft_printf("\n");
 		i++;
 	}
-	if (strs->rgb_strs != NULL)
+	if (all_strs.rgb_strs != NULL)
 	{
-		while (strs->rgb_strs[i])
+		j = 0;
+		while (all_strs.rgb_strs[i])
 		{
-			while (j < strs->rgb_strs[i][0])
+			while (j < all_strs.rgb_strs[i][0])
 			{
-				ft_printf("%d,", strs->values_strs[i][j]);
+				ft_printf("%d,", all_strs.values_strs[i][j]);
 				j++;
 			}
 			ft_printf("\n");
 			i++;
 		}
 	}
+	close(fd);
 	return (0);
 }
 

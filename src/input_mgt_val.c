@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:50 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/16 22:55:34 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/17 23:12:36 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void creation_process(int **ptrs_to_values_str,
 
 	j = 0;
 	k = 0;
-	*ptrs_to_values_str = (int *)malloc(sizeof(int) * (len + 1));
-	*ptrs_to_values_str[k++] = len;
+	(*ptrs_to_values_str) = (int *)malloc(sizeof(int) * (len + 1));
+	(*ptrs_to_values_str)[k++] = len;
 	while(strs_before_atoi[j])
 	{
-		temp = ft_atoi_base(strs_before_atoi[j++], "0123456789abcdef");
-		*ptrs_to_values_str[k++] = temp;
+		temp = ft_atoi(strs_before_atoi[j++]);
+		(*ptrs_to_values_str)[k++] = temp;
 	}
 }
 

@@ -6,11 +6,29 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 19:22:29 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/16 19:25:08 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/17 23:12:04 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void creation_process_rgb(int **ptrs_to_values_str, 
+	char **strs_before_atoi, int len)
+{
+	int		j;
+	int		k;
+	int		temp;
+
+	j = 0;
+	k = 0;
+	(*ptrs_to_values_str) = (int *)malloc(sizeof(int) * (len + 1));
+	(*ptrs_to_values_str)[k++] = len;
+	while(strs_before_atoi[j])
+	{
+		temp = ft_atoi_base(strs_before_atoi[j++], "0123456789abcdef");
+		(*ptrs_to_values_str)[k++] = temp;
+	}
+}
 
 int whether_colors(char *char_strs)
 {
@@ -28,10 +46,8 @@ int whether_colors(char *char_strs)
 
 void	fill_white_for_zero(char **colors_c_arr)
 {
-	int		i;
 	int		len;
 
-	i = 0;
 	len = 8;
 	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!(whether_colors(*colors_c_arr)))
