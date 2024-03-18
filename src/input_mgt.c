@@ -21,7 +21,8 @@ void	get_strs(t_int_strs **all_strs, char **all_lines, t_mode mode, int width)
 	}
 	else if (mode == With_Color)
 	{
-		(*(all_strs))->rgb_strs = get_RGB_strs(all_lines, mode);
+		//(*(all_strs))->rgb_strs = NULL;
+		(*(all_strs))->rgb_strs = get_RGB_strs(all_lines, width);
 		(*(all_strs))->values_strs = get_values_strs(all_lines, mode, width);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/16 22:57:15 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/18 22:25:05 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,32 @@ void free_all(char **strs)
   int   i;
 
   i = 0;
-  while(strs[i])
+  while(strs && strs[i])
   {
     free(strs[i]);
     i++;
   }
   free(strs);
+}
+
+void free_all_int(int **strs)
+{
+  int   i;
+
+  i = 0;
+  while(strs && strs[i])
+  {
+    free(strs[i]);
+    i++;
+  }
+  free(strs);
+}
+
+void free_stru(t_int_strs *struc)
+{ 
+  
+  free_all_int(struc->rgb_strs);
+  free_all_int(struc->values_strs);
 }
 
 /*

@@ -6,14 +6,14 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 19:22:29 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/17 23:12:04 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:25:12 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 void creation_process_rgb(int **ptrs_to_values_str, 
-	char **strs_before_atoi, int len)
+	char **strs_aft_modi, int len)
 {
 	int		j;
 	int		k;
@@ -23,9 +23,11 @@ void creation_process_rgb(int **ptrs_to_values_str,
 	k = 0;
 	(*ptrs_to_values_str) = (int *)malloc(sizeof(int) * (len + 1));
 	(*ptrs_to_values_str)[k++] = len;
-	while(strs_before_atoi[j])
+	//if (strs_aft_modi[j][0] == '0' || strs_aft_modi[j][0] == 'x')
+	//	j++;
+	while(strs_aft_modi[j])
 	{
-		temp = ft_atoi_base(strs_before_atoi[j++], "0123456789abcdef");
+		temp = ft_atoi_base(strs_aft_modi[j++], "0123456789abcdef");
 		(*ptrs_to_values_str)[k++] = temp;
 	}
 }
@@ -44,16 +46,19 @@ int whether_colors(char *char_strs)
 	return (0);
 }
 
-void	fill_white_for_zero(char **colors_c_arr)
+/*
+char	*fill_white_for_zero(void)
 {
 	int		len;
+	char	*str_aft_modi;
 
-	len = 8;
-	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(whether_colors(*colors_c_arr)))
-		return ;
-	ft_strlcpy(*colors_c_arr, "0xFFFFFF", len + 1);
+	len = 6;
+	str_aft_modi = (char *)malloc(sizeof(char) * (len + 1));
+	str_aft_modi[len] = '\0';
+	ft_strlcpy(*(str_aft_modi), "FFFFFF", len + 1);
+	return (&str_aft_modi);
 }
+*/
 
 int find_comma(char *str)
 {

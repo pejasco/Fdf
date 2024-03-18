@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:50 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/17 23:12:36 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:13:18 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ int	*create_values_str_no_col(char *all_lines)
 
 	len = 0;
 	strs_before_atoi = ft_split(all_lines, ' ');
-	while (strs_before_atoi[len])
+	while (strs_before_atoi[len]
+		&& (ft_isdigit(strs_before_atoi[len][0])
+		|| strs_before_atoi[len][0] == '-'))
 		len++;
 	values_str = NULL;
+	ft_printf("no col: %d\n", len);
 	creation_process(&values_str, strs_before_atoi, len);
 	free_all(strs_before_atoi);
 	return(values_str);

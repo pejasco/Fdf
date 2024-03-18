@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:24:21 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/17 19:16:52 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:14:50 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*create_str_w_col_val(char *str_before_atoi)
 	return (str_aft_modi);
 }
 
+/*
 char	**modify_strs_w_col_val(char **str_before_atoi, int len)
 {
 	int		i;
@@ -59,7 +60,7 @@ char	**modify_strs_w_col_val(char **str_before_atoi, int len)
 	}
 	return(strs_aft_modi);
 }
-
+*/
 int	*create_values_str_w_col(char *all_lines)
 {
 	char	**strs_before_atoi;
@@ -68,10 +69,15 @@ int	*create_values_str_w_col(char *all_lines)
 
 	len = 0;
 	strs_before_atoi = ft_split(all_lines, ' ');
-	while (strs_before_atoi[len])
+	while (strs_before_atoi[len]
+		&& (ft_isdigit(strs_before_atoi[len][0])
+		|| strs_before_atoi[len][0] == '-'))
 		len++;
-	modify_strs_w_col_val(strs_before_atoi, len);
+	//while (strs_before_atoi[len])
+	//	len++;
+	//modify_strs_w_col_val(strs_before_atoi, len);
 	values_str = NULL;
+	ft_printf("w_col: %d\n", len);
 	creation_process(&values_str, strs_before_atoi, len);
 	free_all(strs_before_atoi);
 	return(values_str);

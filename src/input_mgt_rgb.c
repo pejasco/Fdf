@@ -6,41 +6,23 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:54 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/17 23:12:06 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:22:15 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	extract_RGB(char *str_before_atoi ,char **colors_c_arr)
-{
-	int		i;
-	int		j;
-	int		k;
-	int		len;
-
-	i = 0;
-	j = i + 1;
-	k = 0;
-	len = 8;
-	*colors_c_arr = (char *)malloc(sizeof(char) * (len + 1));
-	if (*colors_c_arr == NULL)
-		return ;
-	while (str_before_atoi[i] != '0' && str_before_atoi[j] != 'x')
-		i++;
-	while (str_before_atoi[i])
-		*colors_c_arr[k++] = str_before_atoi[i++];
-	*colors_c_arr[k] = '\0';
-}
-
 char	*create_str_w_col_rgb(char *str_before_atoi)
 {
 	char	*str_aft_modi;
 
+	str_aft_modi = NULL;
 	if (!whether_colors(str_before_atoi))
-		fill_white_for_zero(&str_aft_modi);
+		str_aft_modi= "ffffff";
 	else if (whether_colors(str_before_atoi))
-		extract_RGB(str_before_atoi, &str_aft_modi);
+		str_aft_modi = 
+			ft_strchr(str_before_atoi, ',') + 3;
+	//printf("This is ->>>>>%s\n", str_aft_modi);
 	return (str_aft_modi);
 }
 
@@ -76,12 +58,11 @@ int	*create_color_strs_w_col(char *all_lines)
 		len++;
 	strs_aft_modi = modify_strs_w_col_rgb(strs_before_atoi, len);
 	values_str = NULL;
-	free_all(strs_before_atoi);
 	creation_process_rgb(&values_str, strs_aft_modi, len);
 	free_all(strs_before_atoi);
+	free(strs_aft_modi);
 	return(values_str);
 }
-
 
 int	**get_RGB_strs(char **all_lines, int width)
 {

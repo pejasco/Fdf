@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/17 23:58:03 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:29:08 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,23 @@ int	main(int ac, char **av)
 		ft_printf("\n");
 		i++;
 	}
+	ft_printf("\n\n");
 	if (all_strs.rgb_strs != NULL)
 	{
-		j = 0;
+		i = 0;
 		while (all_strs.rgb_strs[i])
 		{
-			while (j < all_strs.rgb_strs[i][0])
+			j = 0;
+			while (j < all_strs.rgb_strs[i][0] + 1)
 			{
-				ft_printf("%d,", all_strs.values_strs[i][j]);
+				ft_printf("%x,", all_strs.rgb_strs[i][j]);
 				j++;
 			}
 			ft_printf("\n");
 			i++;
 		}
 	}
+	free_stru(&all_strs);
 	close(fd);
 	return (0);
 }
