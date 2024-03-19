@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 23:29:08 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:26:18 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**extract_line(int fd, int wid)
 
 	i = 0;
 	all_the_lines = (char **)malloc(sizeof(char *) * (wid + 1));
-	all_the_lines[wid] = '\0';
+	all_the_lines[wid] = NULL;
 	while ((line = get_next_line(fd)))
 	{
 		len = ft_strlen(line);

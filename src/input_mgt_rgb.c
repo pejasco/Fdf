@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:54 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 21:22:15 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:21:53 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	**get_RGB_strs(char **all_lines, int width)
 
 	i = 0;
 	strs = (int **)malloc(sizeof(int *) * (width + 1));
-	strs[width] = '\0';
+	strs[width] = NULL;
 	while (all_lines[i])	
 	{
 			strs[i] = create_color_strs_w_col(all_lines[i]);

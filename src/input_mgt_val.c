@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:50 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 23:13:18 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:26:45 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	**get_values_strs(char **all_lines, t_mode mode, int width)
 
 	i = 0;
 	strs = (int **)malloc(sizeof(int *) * (width + 1));
-	strs[width] = '\0';
+	strs[width] = NULL;
 	if (mode == Without_Color)
 	{
 		while (all_lines[i])
