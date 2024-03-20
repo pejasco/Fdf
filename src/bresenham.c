@@ -6,30 +6,25 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/19 22:03:49 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:23:13 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 t_pix_decis bresenham_algo_2nd
-	(t_coord *current, t_pix_decis last_decis, t_brese_vars *vars)
+	(t_coord_set *pts, t_pix_decis last_decis, t_brese_vars *vars)
 {
+	if (pts->
+
 	while ((current->x != close->x && current.y != close->y)
 		|| (i != (vars.delta_x - 1)))
 	{
-
-
-
-
-
-		
-	}
-	if (last_decis == E) // decis_para <= 0 (case 1)
-	{
-		vars->decis_para_in_E = vars->prev_decis_para + 
-		(2 * vars->delta_y);
-		current->x += 1;	
+		if (last_decis == E) // decis_para <= 0 (case 1)
+		{
+			vars->decis_para_in_E = vars->prev_decis_para + 
+			(2 * vars->delta_y);
+			current->x += 1;	
 	}
 	else if (last_decis == NE) // decis_para >0 (case 2)
 	{

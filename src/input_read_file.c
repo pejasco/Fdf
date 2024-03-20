@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   input_read_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/19 14:26:18 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:03:40 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	**extract_line(int fd, int wid)
 	return (all_the_lines);
 }
 
+
+/*
 int	main(int ac, char **av)
 {
 	int			fd;
@@ -115,6 +117,7 @@ int	main(int ac, char **av)
 	close(fd);
 	return (0);
 }
+*/
 
 /*
 #include <fcntl.h>

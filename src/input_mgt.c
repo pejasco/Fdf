@@ -45,8 +45,8 @@ int input_status(char **all_lines)
 void input_mgt(t_int_strs *strs,char **all_lines, int wid)
 {
 	if (input_status(all_lines))
-		get_strs(&strs ,all_lines, With_Color, wid);
+		get_strs(&strs, all_lines, With_Color, wid);
 	else
-		get_strs(&strs ,all_lines, Without_Color, wid);
+		get_strs(&strs, all_lines, Without_Color, wid);
 	free_all(all_lines);
 }
