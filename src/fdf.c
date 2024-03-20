@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/20 18:02:16 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/20 22:59:24 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 		return (1);
 	all_lines = extract_line(read_vars.fd, read_vars.wid);
 	input_mgt(&all_strs, all_lines, read_vars.wid);
-	all_the_pts = assign_matrix_to_pts
+	all_the_pts = assign_matrix_to_pts()
 
 	free_stru(&all_strs);
 	close(read_vars.fd);
