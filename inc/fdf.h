@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/19 22:35:54 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:46:14 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,40 @@
 # include <fcntl.h>
 # include <X11/keysym.h>
 
-typedef struct s_coord_set
+//struc for read
+typedef	struct s_read_vars
 {
-	t_coord	open;
-	t_coord	close;
-	t_coord	current;
-} t_coord_set;
+	int		fd;
+	int		wid;
+} 	t_read_vars;
 
-typedef struct s_coord
+//struc for bresenham
+
+typedef struct coord
 {
 	double	x;
 	double	y;
 	double	z;
-	double	RGB;
-	double	x_max;
-	double	y_max;
 } t_coord;
+
+typedef struct s_vertex
+{
+	double		x;
+	double		y;
+	double		z;
+	double		RGB;
+	t_coord		coord;
+	double		wid;
+	double		len;
+} t_vertex;
+
+typedef struct s_vertex_set
+{
+	t_coord	open;
+	t_coord	close;
+	t_coord	current;
+} t_vertex_set;
+
 
 typedef struct s_brese_vars
 {
@@ -66,20 +84,21 @@ typedef struct s_int_strs
 	int     wid;
 }   t_int_strs;
 
-
+/*
 typedef struct s_mlx_data
 {
 	void *mlx_ptr;
 	void *win_ptr;
 } t_mlx_data;
+*/
 
 typedef struct s_img
 {
-	void    *img_ptr;
-	char    *img_pixels_ptr;
-	int     bit_per_pixel;
-	int     endian;
-	int     line_len;
+	void    *img_ptr; //ptr to mlx_new_image
+	char    *img_pixels_ptr; //ptr to the pixels of a image
+	int     bit_per_pixel; //8 * 4
+	int     endian; 
+	int     line_len; //Line len is in bytes. WIDTH 800 len_line ~3200 (can differ for alignment)
 }   t_img;
 
 typedef struct	s_var
@@ -121,6 +140,8 @@ int	ft_atoi_base(char *str, char *base);
 
 //bresenham
 int bresenham(t_coord *open, t_coord *close);
+
+
 
 
 

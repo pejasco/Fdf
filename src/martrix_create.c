@@ -6,30 +6,34 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:47:57 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/20 22:58:44 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:30:35 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_vertex	*assign_val_to_ptr_by_row_with_color(t_mode color, int i, t_int_strs *all_strs, int wid)
+t_vertex	*assign_val_to_ptr_by_row_with_color(t_mode color, int row, t_int_strs *all_strs, int wid)
 {
 	int			j;
 	t_vertex	vertex_struc;
 
-	j = 0;
-	while (j != all_strs->values_strs[i][0])
-	{
-		vertex_struc.wid
+	j = 1;
+	while (j != all_strs->values_strs[row][0])
+	
+		vertex_struc.wid = wid;
+		vertex_struc.x = j -1;
+		vertex_struc.y = row;
+		vertex_struc.z = 
 		vertex_struc = all_struc->
 		all_strs->values_strs;
+		if 
+
+
 		vRGB-> all_strs->
 		if (color != With_Color)
+			
 
-		
 
-
-		}
 		j++;
 	}
 	return (&vertex_struc);
