@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:48:49 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 21:06:50 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:42:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	ft_atoi_base(char *str, char *base)
 	{
 		if (str[i] == '-')
 			negative = -1;
-		else if (str[i] != '+')
+		else if (str[i] != '+' && ft_isalnum(str[i]))
 			res = (res * base_length) + (get_nb(ft_tolower(str[i]), base));
 	}
 	//ft_printf("Atoi Res: %x\n", res);

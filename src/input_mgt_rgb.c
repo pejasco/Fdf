@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:54 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/19 14:21:53 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:21:17 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**modify_strs_w_col_rgb(char **str_before_atoi, int len)
 	if (strs_aft_modi == NULL)
 		return NULL;
 	strs_aft_modi[len] = NULL;
-	while(str_before_atoi[i])
+	while(str_before_atoi[i] && ft_isalnum(str_before_atoi[i][0]))
 	{
 		strs_aft_modi[i] = create_str_w_col_rgb(str_before_atoi[i]);
 		i++;
@@ -54,7 +54,7 @@ int	*create_color_strs_w_col(char *all_lines)
 	len = 0;
 	strs_aft_modi = NULL;
 	strs_before_atoi = ft_split(all_lines, ' ');
-	while (strs_before_atoi[len])
+	while (strs_before_atoi[len] && ft_isdigit(strs_before_atoi[len][0]))
 		len++;
 	strs_aft_modi = modify_strs_w_col_rgb(strs_before_atoi, len);
 	values_str = NULL;

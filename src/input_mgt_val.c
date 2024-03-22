@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:50 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/19 14:26:45 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/21 19:34:58 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	*create_values_str_no_col(char *all_lines)
 		|| strs_before_atoi[len][0] == '-'))
 		len++;
 	values_str = NULL;
-	ft_printf("no col: %d\n", len);
+	//ft_printf("no col: %d\n", len);
 	creation_process(&values_str, strs_before_atoi, len);
 	free_all(strs_before_atoi);
 	return(values_str);

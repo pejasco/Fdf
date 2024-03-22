@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/20 15:03:40 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/21 23:46:08 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int find_wid(int fd)
 		width++;
 		free(line);
 	}
-	printf("find-wid->Width: %d\n", width);
+	//printf("find-wid->Width: %d\n", width);
 	return (width);
 }
 
@@ -117,9 +117,9 @@ int	main(int ac, char **av)
 	close(fd);
 	return (0);
 }
-*/
 
-/*
+
+
 #include <fcntl.h>
 #include <stdio.h>
 
