@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:47:57 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/22 23:25:56 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/23 16:59:19 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,19 @@ t_vertex	*vertex_create(t_int_strs *all_strs, int wid)
 
 	row = 0;
 	col = 0;
-	len = all_strs->values_strs[0][0];
+	if (all_strs->values_strs[0] != NULL && all_strs->values_strs != NULL)
+		len = all_strs->values_strs[0][0];
+	else
+		exit (1);
 	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex ) 
 		* ((wid * len)));
-	printf("hahahahahahahaha%d\n", (wid * len));
 	while (row < wid)
 	{
 		col = 0;
 		while(col < len)
 		{
-			vertex_arr[len * row + col] = assign_data_to_vertex(row, col, wid, all_strs);
+			vertex_arr[len * row + col] = 
+			assign_data_to_vertex(row, col, wid, all_strs);
 			col++;
 		}
 		row++;

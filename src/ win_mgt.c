@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:32:48 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/23 14:17:01 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/23 18:18:33 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,20 @@ void	draw_dot(t_mlx_data *mlx, t_vertex *all_vertex)
 		all_vertex->y, all_vertex->RGB);
 }
 
-int		to_do_list(int keysym, t_mlx_data *mlx)
+void	draw_line(t_mlx_data *mlx, t_vertex *all_vertex)
+{
+	for (int x = 0; x < 30; ++x)
+	{
+		supa_pixel_put(&mlx->img, all_vertex->x, 
+			all_vertex->y, 0xFF0000);
+	}
+}
+
+int		keys_activities(int keysym, t_mlx_data *mlx)
 {
 	if (keysym == XK_Escape)
 		mlx_loop_end(mlx->x_lib);
-	printf("didsdfdf");
+
 	mlx_put_image_to_window(mlx->x_lib, 
 							mlx->win, 
 							mlx->img.img_ptr, 
