@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:47:57 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/21 20:10:21 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:25:56 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_vertex	*vertex_create(t_int_strs *all_strs, int wid)
 	while (row < wid)
 	{
 		col = 0;
-		while(col <= len)
+		while(col < len)
 		{
 			vertex_arr[len * row + col] = assign_data_to_vertex(row, col, wid, all_strs);
 			col++;
