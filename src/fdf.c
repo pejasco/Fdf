@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/23 18:05:40 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:38:22 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int		main(int ac, char **av)
 	input_mgt(&all_strs, all_lines, read_vars.wid);
 	all_vertex = vertex_create(&all_strs, read_vars.wid);
 	window_handle(&window);
-	draw_dot(window.x_lib, all_vertex);
+	
+	//draw_dot(window.x_lib, all_vertex);
 	mlx_key_hook(window.win, keys_activities, &window);
 	mlx_loop(window.x_lib);
 	free(all_vertex);
