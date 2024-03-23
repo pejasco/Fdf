@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:32:48 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/23 00:23:14 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/23 00:36:50 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		to_do_list(int keysym, t_mlx_data *mlx)
 {
 	if (keysym == XK_Escape)
 		mlx_loop_end(mlx->x_lib);
+	printf("didsdfdf");
 	/*mlx_put_image_to_window(mlx->x_lib, 
 							mlx->win, 
 							mlx->img.img_ptr, 
