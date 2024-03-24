@@ -6,75 +6,65 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/20 17:23:13 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/24 22:08:53 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_pix_decis bresenham_algo_2nd
-	(t_coord_set *pts, t_pix_decis last_decis, t_brese_vars *vars)
+void bsh_algo(t_vertex *current, t_vertex *close, t_bsh_vars *vars)
 {
-	if (pts->
-
-	while ((current->x != close->x && current.y != close->y)
-		|| (i != (vars.delta_x - 1)))
+	while (current->x != close->x && current->y != close->y)
 	{
-		if (last_decis == E) // decis_para <= 0 (case 1)
+		if (vars->next_decis_para <= 0) // (case 1)
 		{
-			vars->decis_para_in_E = vars->prev_decis_para + 
-			(2 * vars->delta_y);
-			current->x += 1;	
+			vars->cur_decis_para = vars->next_decis_para;
+			vars->next_decis_para = vars->cur_decis_para + (2 * vars->delta_y);
+			current->x += 1;
+			printf("current: (%f, %f)\n close: (%f, %f)\n", 
+				current->x, current->y, close->x, close->y);
+		}
+		else if (vars->next_decis_para > 0)	// (case 2)
+		{
+			vars->cur_decis_para = vars->next_decis_para;
+			vars->next_decis_para = vars->cur_decis_para + 
+				(2 * (vars->delta_y - vars->delta_x));
+			current->x +=1;
+			current->y +=1;
+			printf("current	: (%f, %f)\n", current->x, current->y);
+			printf("close	: (%f, %f)\n", close->x, close->y);
+		}
 	}
-	else if (last_decis == NE) // decis_para >0 (case 2)
-	{
-		vars->decis_para_in_NE = vars->prev_decis_para + 
-		(2 * (vars->delta_y - vars->delta_x));
-		current->x += 1;
-		current->y += 1;
-
-
-	}
+	return ;
 }
 
-int bresenham(t_coord *open, t_coord *close)
+void bsh(t_vertex *open, t_vertex *close)
 {
-	t_brese_vars	vars;
-	t_coord			current;
+	t_bsh_vars	vars;
+	t_vertex	current;
 
-	int i;
-	i = 0;
 	current.x = open->x;
 	current.y = open->y;
 	vars.delta_x = close->x - open->x;
 	vars.delta_y = close->y - open->y;
-	vars.init_decis_para = (2 * vars.delta_y) - vars.delta_x;
-	if (vars.init_decis_para <= 0)
-		bresenham_algo_2nd(&current, E, &vars);
-	else if (vars.init_decis_para > 0)
-		bresenham_algo_2nd(&current, NE, &vars);
-	
-	
-	
-	//while ((current.x != close->x && current.y != close->y)
-	//	|| (i != (vars.delta_x - 1)))
-	{
-		if (vars.init_decis_para <= 0)
-		{
-			
-			vars.prev_decis_pa
-
-		}
-		else if (vars.init_decis_para > 0)
-		{
-			vars.prev_decis_para 
-			vars.prev_decis_para = 
-		}
-		i++;
-	}
-	return (0);
+	vars.next_decis_para = (2 * vars.delta_y) - vars.delta_x;
+	bsh_algo(&current, close, &vars);
 }
 
+/*
+int	main()
+{
+	t_vertex	open;
+	t_vertex	close;
+
+	open.x = 9;
+	open.y = 18;
+	close.x = 14;
+	close.y = 22;
+	bsh(&open, &close);
+	return (0);
+}
+*/
 
 /*
 void		quicksort(t_stacks *stacks, t_qs_stats stats);

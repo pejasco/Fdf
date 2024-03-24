@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/23 19:38:22 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:21:46 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,13 @@ int		read_file_control(int ac, char **av, t_read_vars *read_vars)
 
 void	window_handle(t_mlx_data *mlx)
 {
-	mlx->x_lib = mlx_init();
-	mlx->win = mlx_new_window(mlx->x_lib, SIDE_LEN, SIDE_LEN, "!!!!! FDF !!!!!");
-	mlx->img.img_ptr = mlx_new_image(mlx->x_lib, SIDE_LEN, SIDE_LEN);
-	mlx->img.bits_per_pixel = (8 * 4);
-	mlx->img.line_len = SIDE_LEN * 4;
+	mlx->x_lib = mlx_init(); //V
+	mlx->win = mlx_new_window(mlx->x_lib, SIDE_LEN, SIDE_LEN, "FDF"); //V
+	mlx->img.img_ptr = mlx_new_image(mlx->x_lib, SIDE_LEN, SIDE_LEN); //V
 	mlx->img.img_pixels_ptr = mlx_get_data_addr(mlx->img.img_ptr,
 												&mlx->img.bits_per_pixel,
 												&mlx->img.line_len,
-												&mlx->img.endian);
+												&mlx->img.endian); //V
 }
 
 
@@ -58,6 +56,7 @@ int		main(int ac, char **av)
 	window_handle(&window);
 	
 	//draw_dot(window.x_lib, all_vertex);
+	//mlx_key_hook(window.win, keys_activities, &window);
 	mlx_key_hook(window.win, keys_activities, &window);
 	mlx_loop(window.x_lib);
 	free(all_vertex);
