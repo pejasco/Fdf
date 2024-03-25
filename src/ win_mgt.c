@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:32:48 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/24 23:26:40 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:25:34 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	draw_dot(t_mlx_data *mlx, t_vertex *all_vertex)
 
 void	draw_line(t_mlx_data *mlx, int color)
 {
-	for (int y = 0; y < 200; ++y)
+	for (int y = 0; y < 500; ++y)
 	{
 		for (int x = 0; x < 500; ++x)
 		{
 			supa_pixel_put(&mlx->img, x, y, color);
-			printf("Regina!!!");
+			printf("haha");
 		}
 	}
 }

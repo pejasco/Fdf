@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/24 23:21:46 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:06:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main(int ac, char **av)
 	t_read_vars	read_vars;
 	char		**all_lines;
 	t_int_strs	all_strs;
-	t_vertex	*all_vertex;
+	t_vertex	*vertex_arr;
 	t_mlx_data	window;
 
 	all_lines = NULL;
@@ -52,14 +52,14 @@ int		main(int ac, char **av)
 		return (1);
 	all_lines = extract_line(read_vars.fd, read_vars.wid);
 	input_mgt(&all_strs, all_lines, read_vars.wid);
-	all_vertex = vertex_create(&all_strs, read_vars.wid);
+	vertex_arr = vertex_create(&all_strs, read_vars.wid);
 	window_handle(&window);
 	
 	//draw_dot(window.x_lib, all_vertex);
 	//mlx_key_hook(window.win, keys_activities, &window);
 	mlx_key_hook(window.win, keys_activities, &window);
 	mlx_loop(window.x_lib);
-	free(all_vertex);
+	free(vertex_arr);
 	free_stru(&all_strs);
 	mlx_destroy_window(window.x_lib, window.win);
 	mlx_destroy_image(window.x_lib, window.img.img_ptr);
