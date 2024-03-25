@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:22:46 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/25 12:08:52 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:48:14 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void vert_to_coord(t_vertex *vertex, t_coord *coord)
 	vertex->RGB = coord->RGB;
 }
 
-
+void isometric()
 
 void draw_btw_verts(t_vertex *vertex_a, t_vertex *vertex_b)
 {

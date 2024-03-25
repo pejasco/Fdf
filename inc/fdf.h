@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/22 21:27:47 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:09:53 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <X11/keysym.h>
 
-#define SIDE_LEN	900
+#define SIDE_LEN	1000
 
 //struc for read
 typedef	struct s_read_vars
@@ -35,6 +35,7 @@ typedef struct coord
 	double	x;
 	double	y;
 	double	z;
+	int		RGB;
 } t_coord;
 
 typedef struct s_vertex
@@ -43,28 +44,27 @@ typedef struct s_vertex
 	double		y;
 	double		z;
 	int			RGB;
-	t_coord		coord;
+	t_coord		org_coord;
+	t_coord		adj_coord;
 	int			wid;
 	int			len;
 } t_vertex;
 
 typedef struct s_vertex_set
 {
-	t_coord	open;
+	t_vertex	open;
 	t_coord	close;
 	t_coord	current;
 } t_vertex_set;
 
 
-typedef struct s_brese_vars
+typedef struct s_bsh_vars
 {
 	double	delta_x;
 	double	delta_y;
-	double	init_decis_para;
-	double	prev_decis_para;
-	double	decis_para_in_E;
-	double	decis_para_in_NE;
-} t_brese_vars;
+	double	cur_decis_para;
+	double	next_decis_para;
+} t_bsh_vars;
 
 typedef enum e_pix_decis
 {
@@ -90,7 +90,7 @@ typedef struct s_img
 {
 	void    *img_ptr; //ptr to mlx_new_image
 	char    *img_pixels_ptr; //ptr to the pixels of a image
-	int     bits_per_pixel; //8 * 4
+	int     bits_per_pixel; //8 * 4bytes    1 pixel = 4 bits = 32
 	int     endian; 
 	int     line_len; //Line len is in bytes. WIDTH 800 len_line ~3200 (can differ for alignment)
 }   t_img;
@@ -139,16 +139,16 @@ int find_comma(char *str);
 int	ft_atoi_base(char *str, char *base);
 
 //bresenham
-int bresenham(t_coord *open, t_coord *close);
+void bsh(t_vertex *open, t_vertex *close);
 
 //vertex_create
 t_vertex	*vertex_create(t_int_strs *all_strs, int wid);
 
 //win_mgt
-int		to_do_list(int keysym, t_mlx_data *mlx);
+int		keys_activities(int keysym, t_mlx_data *mlx);
 void	draw_dot(t_mlx_data *mlx, t_vertex *all_vertex);
 void	supa_pixel_put(t_img *img, int x, int y, int color);
-
+int		f(int keysym, t_mlx_data *data);
 
 
 
