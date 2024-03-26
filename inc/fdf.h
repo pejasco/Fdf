@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/25 12:09:53 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/26 22:38:29 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ typedef	struct s_read_vars
 
 //struc for bresenham
 
-typedef struct coord
-{
-	double	x;
-	double	y;
-	double	z;
-	int		RGB;
-} t_coord;
+
+//t_bsh_	bsh_process_coord;
+//t_bsh_res	bsh_result_coord;
+//t_iso	iso_coord;
+//t_scal	scal_coord;
+//t_vertex	rota_coord;
+//t_vertex	tran_coord;
 
 typedef struct s_vertex
 {
@@ -44,26 +44,25 @@ typedef struct s_vertex
 	double		y;
 	double		z;
 	int			RGB;
-	t_coord		org_coord;
-	t_coord		adj_coord;
 	int			wid;
 	int			len;
 } t_vertex;
 
-typedef struct s_vertex_set
-{
-	t_vertex	open;
-	t_coord	close;
-	t_coord	current;
-} t_vertex_set;
 
 
 typedef struct s_bsh_vars
 {
-	double	delta_x;
-	double	delta_y;
-	double	cur_decis_para;
-	double	next_decis_para;
+	double		delta_x;
+	double		delta_y;
+	double		cur_decis_para;
+	double		next_decis_para;
+	double		slope;
+	int			x1_lar_than_x2;
+	int			scenerio;
+	int			init_check;
+	t_vertex	start_temp;
+	t_vertex	end_temp;
+	t_vertex	current_temp;
 } t_bsh_vars;
 
 typedef enum e_pix_decis
@@ -102,7 +101,6 @@ typedef struct s_mlx_data
 	t_img	img;
 } t_mlx_data;
 
-
 //input_read_file
 char	**extract_line(int fd, int wid);
 int read_file(char *file_name);
@@ -127,6 +125,7 @@ int	**get_RGB_strs(char **all_lines, int width);
 void free_all(char **strs);
 void free_all_int(int **strs);
 void free_stru(t_int_strs *struc);
+void keep_coord(t_vertex *src, t_vertex *dest);
 
 //input_mgt_rgb2
 void creation_process_rgb(int **ptrs_to_values_str, 
@@ -140,6 +139,10 @@ int	ft_atoi_base(char *str, char *base);
 
 //bresenham
 void bsh(t_vertex *open, t_vertex *close);
+void bsh_scen1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+void bsh_scen2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+void bsh_scen3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+
 
 //vertex_create
 t_vertex	*vertex_create(t_int_strs *all_strs, int wid);
@@ -150,6 +153,12 @@ void	draw_dot(t_mlx_data *mlx, t_vertex *all_vertex);
 void	supa_pixel_put(t_img *img, int x, int y, int color);
 int		f(int keysym, t_mlx_data *data);
 
+
+//bsh_algo
+void draw_current(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+void bsh_algo1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+void bsh_algo2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+void bsh_algo3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 
 
 

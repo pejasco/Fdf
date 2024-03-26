@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 22:25:05 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:29:38 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ void free_stru(t_int_strs *struc)
   
   free_all_int(struc->rgb_strs);
   free_all_int(struc->values_strs);
+}
+
+void keep_coord(t_vertex *src, t_vertex *dest)
+{
+	dest->x = src->x;
+	dest->x = src->y;
+	dest->x = src->z;
+	dest->RGB = src->RGB;
+	dest->wid = src->wid;
+	dest->len = src->len;
 }
 
 /*
