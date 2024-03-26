@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:49:37 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/26 23:13:53 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:36:59 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void bsh_algo1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 			vars->cur_decis_para = vars->next_decis_para;
 			vars->next_decis_para = vars->cur_decis_para + 
 				(2 * (vars->delta_y - vars->delta_x));
-			(vars->current_temp).x +=1;
-			(vars->current_temp).y +=1;
+			(vars->current_temp).x += 1;
+			(vars->current_temp).y += 1;
 			printf("startX	: (%f, %f)\n", start->x, start->y);
 			printf("start	: (%f, %f)\n", (vars->start_temp).x, (vars->start_temp).y);
 			printf("currentX	: (%f, %f)\n", current->x, current->y);

@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/26 23:21:24 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/26 23:32:28 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,18 @@ void	bsh_scenerio(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars 
 {
 	if (vars->slope < 0)
 	{
-		bsh_scen1(start, end, current, vars);
 		vars->scenerio = 1;
+		bsh_scen1(start, end, current, vars);
 	}
 	else if (vars->slope > 1)
 	{
-		bsh_scen2(start, end, current, vars);
 		vars->scenerio = 2;
+		bsh_scen2(start, end, current, vars);
 	}
 	else
 	{
-		bsh_scen3(start, end, current, vars);
 		vars->scenerio = 3;
+		bsh_scen3(start, end, current, vars);
 	}
 }
 
