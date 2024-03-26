@@ -3,29 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Scofield <Scofield@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/25 23:26:52 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/26 01:49:15 by Scofield         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 
-void bsh(t_vertex *start, t_vertex *end)
+
+
+
+void	bsh(t_vertex *start, t_vertex *end)
 {
 	t_bsh_vars	vars;
 	t_vertex	current;
 
 	current.x = start->x;
 	current.y = start->y;
+	vars.slope = (end->y - current->y) / (end->x - current->x)
+	current.x1_lar_than_x2 = 0;
 	if (end->x < current.x)
 	{
 		current.x = end->x;
-		current.y 
+		current.y = end->y;
+		vars.slope = (start-,>y - current->y) / (start->x - current->x)
+		currentx1_lar_than_x2 = 1;
 	}
+	if (slope < 0)
 
+	else if (slope)
+
+
+	else
 
 	
 
