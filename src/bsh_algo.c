@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 14:49:37 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/26 23:36:59 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/27 19:59:09 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void draw_current(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars 
 
 void bsh_algo1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
-	while ((vars->current_temp).x != (vars->end_temp).x && 
+	while ((vars->current_temp).x != (vars->end_temp).x || 
 		(vars->current_temp).y != (vars->end_temp).y)
 	{
 		if (vars->next_decis_para <= 0) // (case a)
@@ -104,7 +104,7 @@ void bsh_algo1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 
 void bsh_algo2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
-	while ((vars->current_temp).x != (vars->end_temp).x && 
+	while ((vars->current_temp).x != (vars->end_temp).x || 
 		(vars->current_temp).y != (vars->end_temp).y)
 	{
 		if (vars->next_decis_para <= 0) // (case a)
@@ -141,7 +141,7 @@ void bsh_algo2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 
 void bsh_algo3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
-	while (current->x != end->x && current->y != end->y)
+	while (current->x != end->x || current->y != end->y)
 	{
 		if (vars->next_decis_para <= 0) // (case a)
 		{
@@ -168,4 +168,3 @@ void bsh_algo3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 	}
 	return ;
 }
-

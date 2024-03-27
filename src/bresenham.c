@@ -6,11 +6,39 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/26 23:32:28 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:03:44 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	bsh_check(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
+{
+	vars->slope_aft_adj = ((vars->end_temp).y - (vars->start_temp).y) 
+			/ ((vars->end_temp).x - (vars->start_temp).x);
+	if (vars->scenerio == 1)
+	{
+		if (vars->slope_aft_adj > 1)
+		{
+			vars->scen_1_to_scen_2 = 1;
+			bsh_scen2_adj(start, end, current, vars);
+		}
+		else
+			bsh_algo1(start, end, current, vars);
+	}
+	else if (vars->scenerio == 2)
+	{
+		if (vars->slope_aft_adj < 0)
+		{
+			vars->scen_2_to_scen_1 = 1;
+			bsh_scen1_adj(start, end, current, vars);
+		}
+		else
+			bsh_algo2(start, end, current, vars);
+	} 
+	else
+		exit(1);
+}
 
 void	bsh_scen_admin(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
@@ -23,7 +51,7 @@ void	bsh_scen_admin(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_var
 		vars->delta_x = (vars->end_temp).x - (vars->start_temp).x;
 		vars->delta_y = (vars->end_temp).y - (vars->start_temp).y;
 		vars->next_decis_para = (2 * vars->delta_y) - vars->delta_x;
-		bsh_algo1(start, end, current, vars);
+		bsh_check(start, end, current, vars);
 	}
 	else if (vars->scenerio == 2)
 	{
@@ -34,7 +62,7 @@ void	bsh_scen_admin(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_var
 		vars->delta_x = (vars->end_temp).x - (vars->start_temp).x;
 		vars->delta_y = (vars->end_temp).y - (vars->start_temp).y;
 		vars->next_decis_para = (2 * vars->delta_y) - vars->delta_x;
-		bsh_algo2(start, end, current, vars);
+		bsh_check(start, end, current, vars);
 	}
 	else
 		exit(1);
@@ -42,7 +70,7 @@ void	bsh_scen_admin(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_var
 
 void	bsh_scen1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
-	if(vars->x1_lar_than_x2)
+	if (vars->x1_lar_than_x2)
 	{
 		(vars->start_temp).x = end->x;
 		(vars->start_temp).y = -(end->y);
@@ -53,7 +81,7 @@ void	bsh_scen1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 		(vars->end_temp).z = start->z;
 		(vars->end_temp).RGB = start->RGB;
 	}
-	else if(!(vars->x1_lar_than_x2)) 
+	else if (!(vars->x1_lar_than_x2))
 	{
 		(vars->start_temp).x = start->x;
 		(vars->start_temp).y = -(start->y);
@@ -69,7 +97,7 @@ void	bsh_scen1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 
 void	bsh_scen2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
-	if(vars->x1_lar_than_x2)
+	if (vars->x1_lar_than_x2)
 	{
 		(vars->start_temp).x = end->y;
 		(vars->start_temp).y = end->x;
@@ -80,7 +108,7 @@ void	bsh_scen2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 		(vars->end_temp).z = start->z;
 		(vars->end_temp).RGB = start->RGB;
 	}
-	else if(!(vars->x1_lar_than_x2)) 
+	else if (!(vars->x1_lar_than_x2))
 	{
 		(vars->start_temp).x = start->y;
 		(vars->start_temp).y = start->x;
@@ -96,19 +124,20 @@ void	bsh_scen2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 
 void	bsh_scen3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
-	if(vars->x1_lar_than_x2)
+	if (vars->x1_lar_than_x2)
 	{
 		vars->delta_x = start->x - end->x;
 		vars->delta_y = start->y - end->y;
 		vars->next_decis_para = (2 * vars->delta_y) - vars->delta_x;
+		bsh_algo3(end, start, current, vars);
 	}
-	else if(!(vars->x1_lar_than_x2))
+	else if (!(vars->x1_lar_than_x2))
 	{
 		vars->delta_x = end->x - start->x;
 		vars->delta_y = end->y - start->y;
 		vars->next_decis_para = (2 * vars->delta_y) - vars->delta_x;
+		bsh_algo3(start, end, current, vars);
 	}
-	bsh_algo3(start, end, current, vars);
 }
 
 void	bsh_scenerio(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
@@ -132,15 +161,18 @@ void	bsh_scenerio(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars 
 
 void	bsh(t_vertex *start, t_vertex *end)
 {
-	t_bsh_vars	vars;
-	t_vertex	current;
+	t_bsh_vars vars;
+	t_vertex current;
 
-	current.x = start->x;
-	current.y = start->y;
-	vars.slope = (end->y - current.y) / (end->x - current.x);
-	vars.x1_lar_than_x2 = 0;
-	bsh_scenerio(start, end, &current, &vars);
-	if (end->x < current.x)
+	if (end->x >= start->x)
+	{
+		current.x = start->x; // add z //add color
+		current.y = start->y;
+		vars.slope = (end->y - current.y) / (end->x - current.x);
+		vars.x1_lar_than_x2 = 0;
+		bsh_scenerio(start, end, &current, &vars);
+	}
+	else if (end->x < start->x)
 	{
 		current.x = end->x;
 		current.y = end->y;
@@ -148,7 +180,7 @@ void	bsh(t_vertex *start, t_vertex *end)
 			exit(1);
 		vars.slope = (start->y - current.y) / (start->x - current.x);
 		vars.x1_lar_than_x2 = 1;
-		bsh_scenerio(start, end, &current, &vars); //start becomes end
+		bsh_scenerio(start, end, &current, &vars); // start becomes end
 	}
 }
 
@@ -199,15 +231,20 @@ void bsh_algo(t_vertex *current, t_vertex *end, t_bsh_vars *vars)
 
 
 
-int	main()
+int	main(int ac, char **av)
 {
-	t_vertex	start;
-	t_vertex	end;
+	t_vertex start;
+	t_vertex end;
 
-	start.x = 14;
-	start.y = 18;
-	end.x = 9;
-	end.y = 22;
-	bsh(&start, &end);
+	if (ac == 5)
+	{
+		start.x = ft_atoi(av[1]);
+		start.y = ft_atoi(av[2]);
+		end.x = ft_atoi(av[3]);
+		end.y = ft_atoi(av[4]);
+		bsh(&start, &end);
+	}
 	return (0);
 }
+//14 18
+//9 22
