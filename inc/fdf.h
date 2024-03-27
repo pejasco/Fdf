@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/26 22:38:29 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/27 22:08:55 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,21 @@ typedef struct s_bsh_vars
 	double		cur_decis_para;
 	double		next_decis_para;
 	double		slope;
+	double		slope_aft_adj;
 	int			x1_lar_than_x2;
 	int			scenerio;
+	int			scen_1_to_scen_2;
+	int			scen_2_to_scen_1;
 	int			init_check;
 	t_vertex	start_temp;
 	t_vertex	end_temp;
 	t_vertex	current_temp;
+	double	start_temp_x_dummy;
+	double	start_temp_y_dummy;
+	double	end_temp_x_dummy;
+	double	end_temp_y_dummy;
+	double	cur_temp_x_dummy;
+	double	cur_temp_y_dummy;
 } t_bsh_vars;
 
 typedef enum e_pix_decis
@@ -159,6 +168,10 @@ void draw_current(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars 
 void bsh_algo1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 void bsh_algo2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 void bsh_algo3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+
+//bsh_adj
+void	bsh_scen1_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+void	bsh_scen2_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 
 
 

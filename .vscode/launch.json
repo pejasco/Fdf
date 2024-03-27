@@ -10,7 +10,9 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/src/a.out",
-            //"args": [],
+            "args": ["8", "9", "2", "1"],
+            //"args": ["5", "3", "3", "7"],
+            //"args": ["5", "3", "3", "-7"],
             //"args": ["./maps/test_maps/42X.fdf"],
             // "args": ["./maps/test_maps/Celem-col.fdf"],
 
