@@ -6,18 +6,21 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:32:48 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/25 10:25:34 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:09:58 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	supa_pixel_put(t_img *img, int x, int y, int color)
+void	supa_pixel_put(t_img *img_vars, t_px_corrd *coord, int color)
 {
-	int	offset;
+	int				offset;
+	unsigned char	*dst;
 
-	offset = (img->line_len * y) + (x * (img->bits_per_pixel / 8));
-	*((unsigned int *)(offset + img->img_pixels_ptr)) = color;
+	if (coord->x >= WIDTH || coord->x < 0 || coord->y >= HEIGHT || coord->y < 0)
+		return ;
+	offset = (img_vars->line_len * coord->y) + (coord->x * (img_vars->bits_per_pixel / 8));
+	*((unsigned int *)(offset + img_vars->img_pixels_ptr)) = color;
 }
 
 /*
@@ -34,7 +37,7 @@ void	draw_line(t_mlx_data *mlx, int color)
 	{
 		for (int x = 0; x < 500; ++x)
 		{
-			supa_pixel_put(&mlx->img, x, y, color);
+			supa_pixel_put(&mlx->img_vars, x, y, color);
 			printf("haha");
 		}
 	}
@@ -49,16 +52,16 @@ int		keys_activities(int keysym, t_mlx_data *mlx)
 		//mlx_destroy_window(mlx->x_lib, mlx->win);
 		//mlx_destroy_image(mlx->x_lib, mlx->img.img_ptr);
 		//mlx_destroy_display(mlx->x_lib);
-		mlx_loop_end(mlx->x_lib);
+		mlx_loop_end(mlx->mlx_ptr);
 	}
-	mlx_put_image_to_window(mlx->x_lib, 
-							mlx->win, 
-							mlx->img.img_ptr, 
+	mlx_put_image_to_window(mlx->mlx_ptr, 
+							mlx->win_ptr, 
+							mlx->img_vars.img_ptr, 
 							0, 0);
 	return (0);
 }
 
-void	color_screen(t_mlx_data *data, int color)
+void	color_screen(t_mlx_data *mlx, int color)
 {
 	for (int y = 0; y < 200; ++y)	
 	{
@@ -68,7 +71,7 @@ void	color_screen(t_mlx_data *data, int color)
 			 * This function is much faster than the library one🏻
 			 * 	~Buffer in the image and push only when ready-> No flickering effect
 			*/
-			supa_pixel_put(&data->img,
+			supa_pixel_put(&mlx->img_vars,
 						x, 
 						y, 
 						color);
@@ -80,29 +83,29 @@ void	color_screen(t_mlx_data *data, int color)
  * This time i plug color in hexadecimal directly
  * easy vanilla
 */
-int	f(int keysym, t_mlx_data *data)
+int	f(int keysym, t_mlx_data *mlx)
 {
 
 	if (keysym == XK_r)
 	{
-		color_screen(data, 0xff0000);
+		color_screen(mlx, 0xff0000);
 	}
 	else if (keysym == XK_g)
 	{
-		color_screen(data, 0xff00);
+		color_screen(mlx, 0xff00);
 	}
 	else if (keysym == XK_b)
 	{
-		color_screen(data, 0xff);
+		color_screen(mlx, 0xff);
 	}	
 	else if (keysym == XK_Escape)
 		exit(1);
 
 	// push the READY image to window
 	// the last parameters are the offset image-window
-	mlx_put_image_to_window(data->x_lib,
-							data->win, 
-							data->img.img_ptr, 
+	mlx_put_image_to_window(mlx->mlx_ptr,
+							mlx->win_ptr, 
+							mlx->img_vars.img_ptr, 
 							0, 0);
 
 	return 0;

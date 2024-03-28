@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:47:57 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/23 16:59:19 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:19:51 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ t_vertex	assign_data_to_vertex(int row, int col, int wid, t_int_strs *all_strs)
 }
 
 
-t_vertex	*vertex_create(t_int_strs *all_strs, int wid)
+t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_map *map)
 {
 	int			row;
 	int			col;
-	int			len;
 	t_vertex	*vertex_arr;
 
 	row = 0;
 	col = 0;
+	map->row_num = wid;
 	if (all_strs->values_strs[0] != NULL && all_strs->values_strs != NULL)
-		len = all_strs->values_strs[0][0];
+		map->col_num = all_strs->values_strs[0][0];
 	else
 		exit (1);
-	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex ) 
-		* ((wid * len)));
+	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex) 
+		* ((wid * map->col_num)));
 	while (row < wid)
 	{
 		col = 0;
-		while(col < len)
+		while(col < map->col_num)
 		{
-			vertex_arr[len * row + col] = 
+			vertex_arr[map->col_num * row + col] = 
 			assign_data_to_vertex(row, col, wid, all_strs);
 			col++;
 		}
