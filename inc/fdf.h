@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/27 22:08:55 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:08:58 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 # include <fcntl.h>
 # include <X11/keysym.h>
 
-#define SIDE_LEN	1000
+#define WIDTH (1920)
+#define HEIGHT (1080)
+#define MAX_COL (4)
+#define MAX_ROW (4)
 
 //struc for read
 typedef	struct s_read_vars
@@ -38,6 +41,13 @@ typedef	struct s_read_vars
 //t_vertex	rota_coord;
 //t_vertex	tran_coord;
 
+typedef struct s_px_corrd
+{
+	int		x;
+	int		y;
+	int		RGB;
+} t_px_corrd;
+
 typedef struct s_vertex
 {
 	double		x;
@@ -46,8 +56,15 @@ typedef struct s_vertex
 	int			RGB;
 	int			wid;
 	int			len;
+	t_mx		real_coord;
 } t_vertex;
 
+typedef struct s_matrix
+{
+	int			row_num;
+	int			col_num;
+	double		entries[MAX_ROW][MAX_COL];
+} t_mx;
 
 
 typedef struct s_bsh_vars
@@ -103,11 +120,21 @@ typedef struct s_img
 	int     line_len; //Line len is in bytes. WIDTH 800 len_line ~3200 (can differ for alignment)
 }   t_img;
 
+typedef struct s_map
+{
+	t_vertex	*vertexes;
+	int			col_num;
+	int			row_num;
+}	t_map;
+
+
+
 typedef struct s_mlx_data
 {
-	void 	*x_lib;
-	void 	*win;
-	t_img	img;
+	void 	*mlx_ptr; //(before: x_lib)
+	void 	*win_ptr; //(before: win)
+	t_img	img_vars; //(before: img)
+	t_map	map;
 } t_mlx_data;
 
 //input_read_file
@@ -154,7 +181,7 @@ void bsh_scen3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 
 
 //vertex_create
-t_vertex	*vertex_create(t_int_strs *all_strs, int wid);
+t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_map *map);
 
 //win_mgt
 int		keys_activities(int keysym, t_mlx_data *mlx);
