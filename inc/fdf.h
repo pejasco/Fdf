@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/28 18:08:58 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/30 16:45:04 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_px_corrd
 	int		y;
 	int		RGB;
 } t_px_corrd;
+
+//stru
+typedef	struct 
 
 typedef struct s_vertex
 {
