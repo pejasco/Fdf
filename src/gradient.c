@@ -6,25 +6,23 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:15:40 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/30 16:44:10 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/30 18:59:32 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include 
+#include "fdf.h"
+
 
 int gradient_RGB(double progress, int RGB_start, int RGB_end)
 {
-	int color;
+	t_argb RGB;
 
 	if (progress < 0 || progress > 1)
-		return (start);
-	if ()
-
-
-
-
+		return (RGB_start);
+	RGB = argb(
+			(0xff),
+			((1 - progress) * get_r(RGB_start) + progress * get_r(RGB_end)),
+			((1 - progress) * get_g(RGB_start) + progress * get_g(RGB_end)),
+			((1 - progress) * get_b(RGB_start) + progress * get_b(RGB_end)));
+	return (RGB);
 }
-
-00000000 00000000 00000000 11111111
-
-00000000 00000000 00000000 11111111

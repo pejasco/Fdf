@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 00:41:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/27 20:03:44 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/30 23:54:14 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	bsh_scen3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 	}
 }
 
-void	bsh_scenerio(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
+voidbsh_scenerio(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars)
 {
 	if (vars->slope < 0)
 	{
@@ -199,7 +199,7 @@ typedef struct s_qs_stats
 
 quicksort(stacks, (t_qs_stats){.low = stats->low,.high = (med - 1), .from = 'b'});
 */
-
+lope->is_greater_than_1 = f
 /*
 void bsh_algo(t_vertex *current, t_vertex *end, t_bsh_vars *vars)
 {

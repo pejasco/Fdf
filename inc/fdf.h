@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/30 16:45:04 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/30 17:43:57 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 #define HEIGHT (1080)
 #define MAX_COL (4)
 #define MAX_ROW (4)
+#define	WHITE (0xffffff)
+#define BLACK (0x000000)
+#define PI (3.1415926)
+
+typedef	int	t_argb;
 
 //struc for read
 typedef	struct s_read_vars
@@ -48,8 +53,6 @@ typedef struct s_px_corrd
 	int		RGB;
 } t_px_corrd;
 
-//stru
-typedef	struct 
 
 typedef struct s_vertex
 {
@@ -129,8 +132,6 @@ typedef struct s_map
 	int			col_num;
 	int			row_num;
 }	t_map;
-
-
 
 typedef struct s_mlx_data
 {
