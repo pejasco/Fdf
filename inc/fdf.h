@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/30 17:43:57 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/31 18:08:22 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,25 @@ typedef	struct s_read_vars
 } 	t_read_vars;
 
 //struc for bresenham
+typedef	struct s_slope_status
+{
+	bool	is_greater_than_1;
+	bool	is_negative;
+} t_slope_status;
+
+typedef struct s_interpolation
+{
+	double	curr;
+	double	step;
+} t_interpolation;
+
+typedef struct s_delta
+{
+	int	x;
+	int	y;
+} t_delta;
+
+
 
 
 //t_bsh_	bsh_process_coord;
@@ -46,12 +65,12 @@ typedef	struct s_read_vars
 //t_vertex	rota_coord;
 //t_vertex	tran_coord;
 
-typedef struct s_px_corrd
+typedef struct s_px_coord
 {
 	int		x;
 	int		y;
 	int		RGB;
-} t_px_corrd;
+} t_px_coord;
 
 
 typedef struct s_vertex
@@ -71,7 +90,6 @@ typedef struct s_matrix
 	int			col_num;
 	double		entries[MAX_ROW][MAX_COL];
 } t_mx;
-
 
 typedef struct s_bsh_vars
 {
@@ -133,13 +151,13 @@ typedef struct s_map
 	int			row_num;
 }	t_map;
 
-typedef struct s_mlx_data
+typedef struct s_vars //(before: s_mlx_data)
 {
 	void 	*mlx_ptr; //(before: x_lib)
 	void 	*win_ptr; //(before: win)
 	t_img	img_vars; //(before: img)
 	t_map	map;
-} t_mlx_data;
+} t_vars; // (before: t_mlx_data)
 
 //input_read_file
 char	**extract_line(int fd, int wid);
@@ -204,9 +222,9 @@ void bsh_algo3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 void	bsh_scen1_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 void	bsh_scen2_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 
-
-
-
+//gradient
+int 	gradient_RGB(double progress, int RGB_start, int RGB_end);
+void	init_gradient_color(t_interpolation *t, t_px_coord *a, t_px_coord *b);
 
 
 
