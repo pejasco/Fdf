@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/28 18:10:14 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/31 18:40:20 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int		read_file_control(int ac, char **av, t_read_vars *read_vars)
 	return (0);
 }
 
-void	window_handle(t_mlx_data *mlx, t_map *map, t_vertex *vertex_arr)
+void	window_handle(t_vars *mlx)
 {
-	map = vertex_arr;
 	mlx->mlx_ptr = mlx_init(); //V
 	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "FDF"); //V
 	mlx->img_vars.img_ptr = mlx_new_image(mlx->mlx_ptr, WIDTH, HEIGHT); //V
@@ -46,17 +45,17 @@ int		main(int ac, char **av)
 	char		**all_lines;
 	t_int_strs	all_strs;
 	t_vertex	*vertex_arr;
-	t_mlx_data	mlx;
-	t_map		map;
+	t_vars		mlx;
 
 	all_lines = NULL;
 	if (read_file_control(ac, av, &read_vars))
 		return (1);
 	all_lines = extract_line(read_vars.fd, read_vars.wid);
 	input_mgt(&all_strs, all_lines, read_vars.wid);
-	vertex_arr = vertex_create(&all_strs, read_vars.wid, &map);
-	window_handle(&mlx, &map, &vertex_arr);
-	mx_handle()
+	vertex_arr = vertex_create(&all_strs, read_vars.wid, &mlx);
+	create_map(&mlx, vertex_arr);
+	window_handle(&mlx);
+	
 	
 	//draw_dot(window.x_lib, all_vertex);
 	//mlx_key_hook(window.win, keys_activities, &window);

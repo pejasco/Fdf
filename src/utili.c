@@ -6,11 +6,16 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/26 16:29:38 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/31 14:23:21 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+
+
+
+
 
 void free_all(char **strs)
 {
@@ -45,6 +50,8 @@ void free_stru(t_int_strs *struc)
   free_all_int(struc->values_strs);
 }
 
+
+/*
 void keep_coord(t_vertex *src, t_vertex *dest)
 {
 	dest->x = src->x;
@@ -54,6 +61,7 @@ void keep_coord(t_vertex *src, t_vertex *dest)
 	dest->wid = src->wid;
 	dest->len = src->len;
 }
+*/
 
 /*
 uint32_t hex2int(char *hex)
