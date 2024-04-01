@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform.c                                        :+:      :+:    :+:   */
+/*   scale.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 14:25:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/01 15:47:44 by chuleung         ###   ########.fr       */
+/*   Created: 2024/04/01 16:47:56 by chuleung          #+#    #+#             */
+/*   Updated: 2024/04/01 20:23:33 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	transform_all_vertexes(t_vars *vars, t_vertex *vertex_arr, t_mx transform)
+t_mx	mx_scale4x4(double scale)
 {
-	int	i;
-	int	total;
+	t_mx	scale4x4;
 
-	i = 0;
-	total = (vars->map).col_num * (vars->map).row_num;
-	while (i < total)
-	{
-		vertex_arr[i].real_coord = mtxa_mult_mtxb(transform,
-				vertex_arr[i].real_coord);
-		i++;
-	}
+	scale4x4 = (t_mx){
+		.row_num = 4,
+		.col_num = 4,
+		.entries = {
+	{scale, 0, 0, 0},
+	{0, scale, 0, 0},
+	{0, 0, scale, 0},
+	{0, 0, 0, 1}}};
+	return (scale4x4);
 }

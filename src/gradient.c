@@ -6,12 +6,11 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 15:15:40 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 13:48:49 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:31:51 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 int gradient_RGB(double progress, int RGB_start, int RGB_end)
 {

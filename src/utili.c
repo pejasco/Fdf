@@ -6,16 +6,11 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 14:23:21 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:31:59 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-
-
-
-
 
 void free_all(char **strs)
 {

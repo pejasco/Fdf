@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 18:08:22 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:55:24 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 #define	WHITE (0xffffff)
 #define BLACK (0x000000)
 #define PI (3.1415926)
+# define KNRM "\x1B[0m"
+# define KRED "\x1B[31m"
+# define KYEL "\x1B[33m"
 
 typedef	int	t_argb;
 
@@ -146,7 +149,6 @@ typedef struct s_img
 
 typedef struct s_map
 {
-	t_vertex	*vertexes;
 	int			col_num;
 	int			row_num;
 }	t_map;
@@ -206,10 +208,10 @@ void bsh_scen3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *va
 t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_map *map);
 
 //win_mgt
-int		keys_activities(int keysym, t_mlx_data *mlx);
-void	draw_dot(t_mlx_data *mlx, t_vertex *all_vertex);
+int		keys_activities(int keysym, t_vars *mlx);
+void	draw_dot(t_vars *mlx, t_vertex *all_vertex);
 void	supa_pixel_put(t_img *img, int x, int y, int color);
-int		f(int keysym, t_mlx_data *data);
+int		f(int keysym, t_vars *data);
 
 
 //bsh_algo
@@ -226,7 +228,23 @@ void	bsh_scen2_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars
 int 	gradient_RGB(double progress, int RGB_start, int RGB_end);
 void	init_gradient_color(t_interpolation *t, t_px_coord *a, t_px_coord *b);
 
+//compose
+void assign_vertexes_in_map(t_vars *vars, t_vertex *vertex_arr);
 
+//mtx
+void	transform_all_vertexes(t_vars *vars, t_vertex *vertex_arr, t_mx transform);
+t_mx	mtxa_mult_mtxb(t_mx mtxa, t_mx mtxb);
+
+//rotation
+t_mx	rot_mx_4x4_x(double angle);
+t_mx	rot_mx_4x4_y(double angle);
+t_mx	rot_mx_4x4_z(double angle);
+
+//transform_iso
+t_mx	mx_iso4x4(void);
+
+//sclate
+t_mx	mx_scale4x4(double scale);
 
 
 
