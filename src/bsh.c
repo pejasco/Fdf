@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:22:41 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 13:57:18 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/02 15:56:54 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	draw_colored_pixels_bresenham(t_img *img_vars,
 	t_delta			delta;
 
 	calc_error_and_delta(&error, &delta, &a, &b);
-	init_gradient_color_transition(&t, &a, &b);
+	init_gradient_color(&t, &a, &b);
 	current_pix = a;
 	while (current_pix.x <= b.x)
 	{

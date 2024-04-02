@@ -1,54 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform.c                                        :+:      :+:    :+:   */
+/*   funcs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 14:25:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/02 23:50:02 by chuleung         ###   ########.fr       */
+/*   Created: 2024/04/02 13:41:37 by chuleung          #+#    #+#             */
+/*   Updated: 2024/04/02 13:49:07 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	isometric_handle (int key, int button, t_vars *vars)
+t_mx	pxcoord_to_mx(t_px_coord px_coord)
 {
+	t_mx	mx;
 
-
-
-
-
-
-
-
+	mx.col_num = 1;
+	mx.row_num = 2;
+	mx.entries[0][0] = (double)(px_coord.x);
+	mx.entries[1][0] = (double)(px_coord.y);
+	return (mx);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void	transform_all_vertexes(t_vars *vars, t_vertex *vertex_arr, t_mx transform)
+t_px_coord	mx_to_pxcoord(t_mx mx)
 {
-	int	i;
-	int	total;
+	t_px_coord	px_coord;
 
-	i = 0;
-	total = (vars->map).col_num * (vars->map).row_num;
-	while (i < total)
-	{
-		vertex_arr[i].real_coord = mtxa_mult_mtxb(transform,
-				vertex_arr[i].real_coord);
-		i++;
-	}
+	px_coord.x = round_double(mx.entries[0][0]);
+	px_coord.y = round_double(mx.entries[1][0]);
+	return (px_coord);
 }

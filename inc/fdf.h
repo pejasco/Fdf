@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/01 22:55:24 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:15:48 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <X11/keysym.h>
+# include <X11/Xlib.h>
 
 #define WIDTH (1920)
 #define HEIGHT (1080)
@@ -197,11 +198,8 @@ int find_comma(char *str);
 //ft_atoi_base
 int	ft_atoi_base(char *str, char *base);
 
-//bresenham
-void bsh(t_vertex *open, t_vertex *close);
-void bsh_scen1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-void bsh_scen2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-void bsh_scen3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
+//bsh
+
 
 
 //vertex_create
@@ -213,16 +211,6 @@ void	draw_dot(t_vars *mlx, t_vertex *all_vertex);
 void	supa_pixel_put(t_img *img, int x, int y, int color);
 int		f(int keysym, t_vars *data);
 
-
-//bsh_algo
-void draw_current(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-void bsh_algo1(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-void bsh_algo2(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-void bsh_algo3(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-
-//bsh_adj
-void	bsh_scen1_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
-void	bsh_scen2_adj(t_vertex *start, t_vertex *end, t_vertex *current, t_bsh_vars *vars);
 
 //gradient
 int 	gradient_RGB(double progress, int RGB_start, int RGB_end);
@@ -246,7 +234,29 @@ t_mx	mx_iso4x4(void);
 //sclate
 t_mx	mx_scale4x4(double scale);
 
+//utili2
+void	int_swap(int *a, int *b);
+void	px_coord_swap(t_px_coord *a, t_px_coord *b);
+int		round_double(double n);
 
+//funcs
+t_mx		pxcoord_to_mx(t_px_coord px_coord);
+t_px_coord	mx_to_pxcoord(t_mx mx);
+
+//coord_conversion
+t_mx		ortho_screen_coord(t_mx world_coord);
+t_px_coord	raster_coord(t_mx screen_coord);
+
+//ortho_render
+t_px_coord	ortho_raster_coord_with_color(t_vars *vars, 
+	t_vertex *vertex_arr, 
+	int row_idx, int col_idx);
+void    ortho_model(t_vars *vars, t_vertex *vertex_arr);
+
+//event
+int	isometric_handle_key(int key, t_vars *vars, 
+	t_vertex *vertex_arr, int fd);
+int	mouse_button(int button, t_vars *vars);
 
 
 

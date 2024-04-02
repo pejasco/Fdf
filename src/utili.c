@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/01 15:31:59 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:34:04 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void free_all_int(int **strs)
 
 void free_stru(t_int_strs *struc)
 { 
-  
   free_all_int(struc->rgb_strs);
   free_all_int(struc->values_strs);
 }
