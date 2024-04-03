@@ -6,12 +6,13 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 16:18:51 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:58:42 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+/*
 void	map_data_check(char	**all_the_lines, int fd)
 {
 	int		i;
@@ -23,8 +24,8 @@ void	map_data_check(char	**all_the_lines, int fd)
 		j = 0;
 		while(all_the_lines[i][j])
 		{
-			if (!(ft_isspace(all_the_lines[i][j])) || !(ft_isalnum(all_the_lines[i][j]))
-			|| !(ft_strchr("+-,", all_the_lines[i][j])))
+			if ((!(ft_isspace(all_the_lines[i][j]))) && !(ft_isalnum(all_the_lines[i][j]))
+			&& !(ft_strchr("+-,", all_the_lines[i][j])))
 			{
 				free_all(all_the_lines);
 				close(fd);
@@ -35,6 +36,7 @@ void	map_data_check(char	**all_the_lines, int fd)
 		i++;
 	}
 }
+*/
 
 int read_file(char *file_name)
 {
@@ -70,7 +72,6 @@ char	**extract_line(int fd, int wid)
 	char	*line;
 	char	**all_the_lines;
 	int		i;
-	int		j;
 	int		len;
 
 	i = 0;
@@ -84,7 +85,7 @@ char	**extract_line(int fd, int wid)
 		i++;
 		free(line);
 	}
-	map_data_check(all_the_lines, fd);
+	//map_data_check(all_the_lines, fd);
 	return (all_the_lines);
 }
 

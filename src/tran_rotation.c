@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotation.c                                         :+:      :+:    :+:   */
+/*   tran_rotation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:10:22 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/01 16:46:56 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/03 17:35:21 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mx	rot_mx_4x4_x(double angle)
+t_mx	rot_x_mx_4x4(double angle)
 {
 	t_mx	rot_x;
 
@@ -27,7 +27,7 @@ t_mx	rot_mx_4x4_x(double angle)
 	return (rot_x);
 }
 
-t_mx	rot_mx_4x4_y(double angle)
+t_mx	rot_y_mx_4x4(double angle)
 {
 	t_mx	rot_y;
 
@@ -42,7 +42,7 @@ t_mx	rot_mx_4x4_y(double angle)
 	return (rot_y);
 }
 
-t_mx	rot_mx_4x4_z(double angle)
+t_mx	rot_z_mx_4x4(double angle)
 {
 	t_mx	rot_z;
 

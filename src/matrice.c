@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtx.c                                              :+:      :+:    :+:   */
+/*   matrice.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:46:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/01 21:35:17 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:12:49 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	multi_process(t_mx *product, t_mx *mxa, t_mx *mxb)
 	}
 }
 
-static void	mx_mult_error_msg(void)
+void	mx_mult_error_msg(void)
 {
 	ft_putstr_fd(KRED, STDERR_FILENO);
 	ft_putstr_fd("WARNING:", STDERR_FILENO);
@@ -52,7 +52,6 @@ static void	mx_mult_error_msg(void)
 t_mx	mtxa_mult_mtxb(t_mx mtxa, t_mx mtxb)
 {
 	t_mx		product;
-	int			i;
 	
 	if (mtxa.col_num != mtxb.row_num)
 	{
@@ -63,5 +62,3 @@ t_mx	mtxa_mult_mtxb(t_mx mtxa, t_mx mtxb)
 	multi_process(&product, &mtxa, &mtxb);
 	return (product);
 }
-
-

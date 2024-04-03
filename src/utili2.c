@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 14:24:20 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 14:56:56 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/03 13:08:44 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ int	round_double(double n)
 		return ((int)(n + 0.5));
 	else
 		return ((int)(n - 0.5));
+}
+
+int ft_abs(int nbr)
+{
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }

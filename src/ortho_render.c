@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 22:43:34 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/02 23:31:01 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:53:46 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_px_coord	ortho_raster_coord_with_color(t_vars *vars, t_vertex *vertex_arr,
 	return (pixel);
 }
 
-void    ortho_model(t_vars *vars, t_vertex *vertex_arr)
+void	ortho_model(t_vars *vars)
 {
 	int		row_idx;
 	int		col_idx;
@@ -42,14 +42,14 @@ void    ortho_model(t_vars *vars, t_vertex *vertex_arr)
 			if (col_idx != vars->map.col_num - 1)
 			{
 				draw_colored_line(&vars->img_vars,
-					ortho_raster_coord_with_color(vars, vertex_arr, row_idx, col_idx),
-					ortho_raster_coord_with_color(vars, vertex_arr, row_idx, col_idx + 1));
+					ortho_raster_coord_with_color(vars, vars->vertex_arr, row_idx, col_idx),
+					ortho_raster_coord_with_color(vars, vars->vertex_arr, row_idx, col_idx + 1));
 			}
 			if (row_idx != vars->map.row_num - 1)
 			{
 				draw_colored_line(&vars->img_vars,
-					ortho_raster_coord_with_color(vars, vertex_arr, row_idx, col_idx),
-					ortho_raster_coord_with_color(vars, vertex_arr, row_idx + 1, col_idx));
+					ortho_raster_coord_with_color(vars, vars->vertex_arr, row_idx, col_idx),
+					ortho_raster_coord_with_color(vars, vars->vertex_arr, row_idx + 1, col_idx));
 			}
 			col_idx++;
 		}

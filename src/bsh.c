@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:22:41 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/02 15:56:54 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:30:05 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ static void	draw_pixel_bresenham(t_img *img_vars, t_slope_status slope,
 		t_px_coord point)
 {
 	if (slope.is_greater_than_1 && slope.is_negative)
-		put_pixel_img(img_vars, (t_px_coord){.x = point.y, .y = -point.x},
+		supa_pixel_put(img_vars, (t_px_coord){.x = point.y, .y = -point.x},
 			point.RGB);
 	else if (slope.is_negative)
-		put_pixel_img(img_vars, (t_px_coord){.x = point.x, .y = -point.y},
+		supa_pixel_put(img_vars, (t_px_coord){.x = point.x, .y = -point.y},
 			point.RGB);
 	else if (slope.is_greater_than_1)
-		put_pixel_img(img_vars, (t_px_coord){.x = point.y, .y = point.x},
+		supa_pixel_put(img_vars, (t_px_coord){.x = point.y, .y = point.x},
 			point.RGB);
 	else
-		put_pixel_img(img_vars, point, point.RGB);
+		supa_pixel_put(img_vars, point, point.RGB);
 }
 
 static void	draw_colored_pixels_bresenham(t_img *img_vars,
@@ -72,11 +72,11 @@ static void	draw_colored_pixels_bresenham(t_img *img_vars,
 	t_delta			delta;
 
 	calc_error_and_delta(&error, &delta, &a, &b);
-	init_gradient_color(&t, &a, &b);
+	init_gradient_RGB(&t, &a, &b);
 	current_pix = a;
 	while (current_pix.x <= b.x)
 	{
-		current_pix.RGB = gradient_color(t.curr, a.RGB, b.RGB);
+		current_pix.RGB = gradient_RGB(t.curr, a.RGB, b.RGB);
 		draw_pixel_bresenham(img_vars, slope, current_pix);
 		if (error > 0)
 		{
