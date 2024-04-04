@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:24:21 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 23:14:50 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:05:05 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	*create_values_str_w_col(char *all_lines)
 	//	len++;
 	//modify_strs_w_col_val(strs_before_atoi, len);
 	values_str = NULL;
-	ft_printf("w_col: %d\n", len);
+	//ft_printf("w_col: %d\n", len);
 	creation_process(&values_str, strs_before_atoi, len);
 	free_all(strs_before_atoi);
 	return(values_str);

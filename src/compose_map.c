@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:22:46 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 14:33:06 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 11:17:55 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void populate_vertexes_in_map(t_vars *vars, t_vertex *vertex_arr)
 	double      init_scale;
 	t_vertex    *temp;
 
-	init_scale = 67.9;
+	init_scale = 50;
 	row = 0;
 	while (row < vars->map.row_num)
 	{

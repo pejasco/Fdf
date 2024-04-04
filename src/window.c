@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 09:25:39 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 16:08:18 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 12:36:48 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	window_handle(t_vars *vars)
 void	put_image_to_window_vars(t_vars *vars)
 {
 	mlx_put_image_to_window(vars->mlx_ptr, 
-	vars->win_ptr, vars->img_vars.img_pixels_ptr, 0 ,0);
+	vars->win_ptr, vars->img_vars.img_ptr, 0 ,0);
 }
 
 void	window_close(t_vars *vars, t_vertex *vertex_arr, 
