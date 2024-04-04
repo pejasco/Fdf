@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/04 12:36:09 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:43:29 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		read_file_control(int ac, char **av, t_read_vars *read_vars)
 void	set_up_hooks(t_vars *vars)
 {
 	press_key_hook(vars->win_ptr, isometric_handle_key, vars);
-	mlx_mouse_hook(vars->win_ptr, mouse_button, vars);
+	mlx_mouse_hook(vars->win_ptr, my_scroll_hook, vars);
 }
 
 int		main(int ac, char **av)

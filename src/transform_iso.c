@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:05:25 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 17:58:49 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:48:55 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	scale(t_vars *vars, int key)
 	put_image_to_window_vars(vars);
 }
 
+/*
 void	scale_mouse(t_vars *vars, int button)
 {
 	t_mx	scale4x4;
@@ -51,7 +52,7 @@ void	scale_mouse(t_vars *vars, int button)
 	fill_image_with_color(&vars->img_vars, BLACK);
 	ortho_model(vars);
 	put_image_to_window_vars(vars);
-}
+}*/
 
 void	rotate(t_vars *vars, int key)
 {

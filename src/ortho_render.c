@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 22:43:34 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 16:53:46 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:13:44 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ortho_model(t_vars *vars)
 	while (row_idx < vars->map.row_num)
 	{
 		col_idx = 0;
-		while (col_idx < vars->map.col_num - 1)
+		while (col_idx < vars->map.col_num)
 		{ 
 			if (col_idx != vars->map.col_num - 1)
 			{
