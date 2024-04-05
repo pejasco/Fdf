@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:48:49 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/21 23:42:20 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:52:43 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ int	check_errors(char *str, char *base)
 	int	start;
 
 	start = 0;
-	while (str[start] != '\0' && (str[start] == ' ' || str[start] == '\t' ||
-		str[start] == '\r' || str[start] == '\n' || str[start] == '\v' ||
-		str[start] == '\f'))
+	while (str[start] != '\0' && (str[start] == ' ' || str[start] == '\t'
+			|| str[start] == '\r' || str[start] == '\n' || str[start] == '\v'
+			|| str[start] == '\f'))
 		start++;
 	i = start;
 	while (str[i])
 	{
 		j = 0;
-		while (base[j] && (str[i] != base[j] ||
-				(str[i] == '-' || str[i] == '+')))
+		while (base[j] && (str[i] != base[j]
+				|| (str[i] == '-' || str[i] == '+')))
 			++j;
 		if (str[i] != base[j] && str[i] != '-' && str[i] != '+')
 			return (0);
@@ -89,15 +89,13 @@ int	ft_atoi_base(char *str, char *base)
 	i = s - 1;
 	res = 0;
 	negative = 1;
-	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s) ||
-			(str[i] != '-' && str[i] != '+')))
+	while (str[++i] && (((str[i] == '-' || str[i] == '+') && i == s)
+			|| (str[i] != '-' && str[i] != '+')))
 	{
 		if (str[i] == '-')
 			negative = -1;
 		else if (str[i] != '+' && ft_isalnum(str[i]))
 			res = (res * base_length) + (get_nb(ft_tolower(str[i]), base));
 	}
-	//ft_printf("Atoi Res: %x\n", res);
-	//ft_printf("Atoi Neg: %x\n", negative);
 	return (res * negative);
 }

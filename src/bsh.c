@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 12:22:41 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 14:30:05 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 15:41:44 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ static void	draw_colored_pixels_bresenham(t_img *img_vars,
 	t_delta			delta;
 
 	calc_error_and_delta(&error, &delta, &a, &b);
-	init_gradient_RGB(&t, &a, &b);
+	init_gradient_rgb(&t, &a, &b);
 	current_pix = a;
 	while (current_pix.x <= b.x)
 	{
-		current_pix.RGB = gradient_RGB(t.curr, a.RGB, b.RGB);
+		current_pix.RGB = gradient_rgb(t.curr, a.RGB, b.RGB);
 		draw_pixel_bresenham(img_vars, slope, current_pix);
 		if (error > 0)
 		{
@@ -90,7 +90,7 @@ static void	draw_colored_pixels_bresenham(t_img *img_vars,
 	}
 }
 
-void	draw_colored_line(t_img *img_vars, t_px_coord a, t_px_coord b)
+void	draw_line(t_img *img_vars, t_px_coord a, t_px_coord b)
 {
 	t_slope_status	slope;
 

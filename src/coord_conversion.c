@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:31:49 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 12:28:18 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:39:50 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,3 @@ t_px_coord	raster_coord(t_mx screen_coord)
 	raster_coord.y = -raster_coord.y + HEIGHT / 2;
 	return (raster_coord);
 }
-
-

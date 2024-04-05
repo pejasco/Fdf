@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/02 23:15:48 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:50:25 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,6 @@ typedef struct s_delta
 	int	y;
 } t_delta;
 
-
-
-
-//t_bsh_	bsh_process_coord;
-//t_bsh_res	bsh_result_coord;
-//t_iso	iso_coord;
-//t_scal	scal_coord;
-//t_vertex	rota_coord;
-//t_vertex	tran_coord;
-
 typedef struct s_px_coord
 {
 	int		x;
@@ -76,6 +66,12 @@ typedef struct s_px_coord
 	int		RGB;
 } t_px_coord;
 
+typedef struct s_matrix
+{
+	int			row_num;
+	int			col_num;
+	double		entries[MAX_ROW][MAX_COL];
+} t_mx;
 
 typedef struct s_vertex
 {
@@ -87,13 +83,6 @@ typedef struct s_vertex
 	int			len;
 	t_mx		real_coord;
 } t_vertex;
-
-typedef struct s_matrix
-{
-	int			row_num;
-	int			col_num;
-	double		entries[MAX_ROW][MAX_COL];
-} t_mx;
 
 typedef struct s_bsh_vars
 {
@@ -156,11 +145,50 @@ typedef struct s_map
 
 typedef struct s_vars //(before: s_mlx_data)
 {
-	void 	*mlx_ptr; //(before: x_lib)
-	void 	*win_ptr; //(before: win)
-	t_img	img_vars; //(before: img)
-	t_map	map;
+	void		*mlx_ptr; //(before: x_lib)
+	void		*win_ptr; //(before: win)
+	t_img		img_vars; //(before: img)
+	t_map		map;
+	t_vertex	*vertex_arr;	
 } t_vars; // (before: t_mlx_data)
+
+//argb
+t_argb	argb(unsigned char alpha, unsigned char r, unsigned char g,
+				unsigned char b);
+unsigned char	get_a(t_argb argb);
+unsigned char	get_r(t_argb argb);
+unsigned char	get_g(t_argb argb);
+unsigned char	get_b(t_argb argb);
+
+//bsh
+void	draw_line(t_img *img_vars, t_px_coord a, t_px_coord b);
+
+//compose_map
+t_mx	point_real_coord(double x, double y, double z);
+void put_vertexes_into_map(t_vars *vars, t_vertex *vertex_arr);
+
+//coord_conversion
+t_mx		ortho_screen_coord(t_mx world_coord);
+t_px_coord	raster_coord(t_mx screen_coord);
+
+//event
+int	iso_kb_key(int key, t_vars *vars);
+int	iso_mouse_button(int button, int x, int y, t_vars *vars);
+
+//ft_atoi_base
+int	ft_atoi_base(char *str, char *base);
+
+//funcs
+t_mx		pxcoord_to_mx(t_px_coord px_coord);
+t_px_coord	mx_to_pxcoord(t_mx mx);
+
+//gradient
+int 	gradient_rgb(double progress, int RGB_start, int RGB_end);
+void	init_gradient_rgb(t_interpolation *t, t_px_coord *a, t_px_coord *b);
+
+//image
+void	supa_pixel_put(t_img *img_vars, t_px_coord coord, t_argb color);
+void	fill_image_with_color(t_img *img_vars, int color);
 
 //input_read_file
 char	**extract_line(int fd, int wid);
@@ -180,104 +208,63 @@ void creation_process(int **ptrs_to_values_str, char **strs_before_atoi, int len
 int	*create_values_str_w_col(char *all_lines);
 
 //input_mgt_rgb
-int	**get_RGB_strs(char **all_lines, int width);
-
-//utilic
-void free_all(char **strs);
-void free_all_int(int **strs);
-void free_stru(t_int_strs *struc);
-void keep_coord(t_vertex *src, t_vertex *dest);
+int	**get_rgb_strs(char **all_lines, int width);
 
 //input_mgt_rgb2
 void creation_process_rgb(int **ptrs_to_values_str, 
 	char **strs_before_atoi, int len);
 int whether_colors(char *char_strs);
-void	fill_white_for_zero(char **colors_c_arr);
 int find_comma(char *str);
 
-//ft_atoi_base
-int	ft_atoi_base(char *str, char *base);
+//key_tranform_ops
+t_mx	create_transl_mtx_hotkey(int key);
+t_mx	create_scale_mtx_hotkey(int key_or_button);
+t_mx	create_rotate_mtx_hotkey(int key);
+void	transform_all_vertexes(t_vars *vars, t_mx transform);
 
-//bsh
-
-
-
-//vertex_create
-t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_map *map);
-
-//win_mgt
-int		keys_activities(int keysym, t_vars *mlx);
-void	draw_dot(t_vars *mlx, t_vertex *all_vertex);
-void	supa_pixel_put(t_img *img, int x, int y, int color);
-int		f(int keysym, t_vars *data);
-
-
-//gradient
-int 	gradient_RGB(double progress, int RGB_start, int RGB_end);
-void	init_gradient_color(t_interpolation *t, t_px_coord *a, t_px_coord *b);
-
-//compose
-void assign_vertexes_in_map(t_vars *vars, t_vertex *vertex_arr);
-
-//mtx
-void	transform_all_vertexes(t_vars *vars, t_vertex *vertex_arr, t_mx transform);
+//matrice
 t_mx	mtxa_mult_mtxb(t_mx mtxa, t_mx mtxb);
-
-//rotation
-t_mx	rot_mx_4x4_x(double angle);
-t_mx	rot_mx_4x4_y(double angle);
-t_mx	rot_mx_4x4_z(double angle);
-
-//transform_iso
-t_mx	mx_iso4x4(void);
-
-//sclate
-t_mx	mx_scale4x4(double scale);
-
-//utili2
-void	int_swap(int *a, int *b);
-void	px_coord_swap(t_px_coord *a, t_px_coord *b);
-int		round_double(double n);
-
-//funcs
-t_mx		pxcoord_to_mx(t_px_coord px_coord);
-t_px_coord	mx_to_pxcoord(t_mx mx);
-
-//coord_conversion
-t_mx		ortho_screen_coord(t_mx world_coord);
-t_px_coord	raster_coord(t_mx screen_coord);
 
 //ortho_render
 t_px_coord	ortho_raster_coord_with_color(t_vars *vars, 
 	t_vertex *vertex_arr, 
 	int row_idx, int col_idx);
-void    ortho_model(t_vars *vars, t_vertex *vertex_arr);
+void	ortho_model(t_vars *vars);
 
-//event
-int	isometric_handle_key(int key, t_vars *vars, 
-	t_vertex *vertex_arr, int fd);
-int	mouse_button(int button, t_vars *vars);
+//tran_rotation
+t_mx	rot_x_mx_4x4(double angle);
+t_mx	rot_y_mx_4x4(double angle);
+t_mx	rot_z_mx_4x4(double angle);
 
+//tran_scale
+t_mx	create_scale4x4(double scale);
 
-
-
-
-
-
-
-
-
-
+//transform_iso
+t_mx	mx_iso4x4(void);
+void	translate(t_vars *vars, int key);
+void	scale(t_vars *vars, int key);
+void	rotate(t_vars *vars, int key);
 
 
+//utilic
+void free_all(char **strs);
+void free_all_int(int **strs);
+void free_stru(t_int_strs *struc);
 
+//utili2
+void	int_swap(int *a, int *b);
+void	px_coord_swap(t_px_coord *a, t_px_coord *b);
+int		round_double(double n);
+int		ft_abs(int nbr);
 
+//vertex_create
+t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_vars *mlx);
 
-
-
-
-
-
+//window
+void	window_handle(t_vars *vars);
+void	put_image_to_window_vars(t_vars *vars);
+void	window_close(t_vars *vars, t_vertex *vertex_arr, 
+	t_int_strs *all_strs, int fd);
 
 /*
 t_int_strs *input_mgt(char **all_lines, int wid);
@@ -300,7 +287,7 @@ int	**get_values_strs(char **all_lines, t_mode mode, int width);
 
 int	*create_values_str_w_col(char *all_lines);
 
-int	**get_RGB_strs(char **all_lines, int width);
+int	**get_rgb_strs(char **all_lines, int width);
 
 void creation_process(int **ptrs_to_values_str, 
 	char **strs_before_atoi, int len);

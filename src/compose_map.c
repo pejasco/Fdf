@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:22:46 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/04 11:17:55 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:46:51 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ t_mx	point_real_coord(double x, double y, double z)
 	return (point);
 }
 
-void populate_vertexes_in_map(t_vars *vars, t_vertex *vertex_arr)
+void	put_vertexes_into_map(t_vars *vars, t_vertex *vertex_arr)
 {
-	int         col;
-	int         row;
-	double      init_scale;
-	t_vertex    *temp;
+	int			col;
+	int			row;
+	double		init_scale;
+	t_vertex	*temp;
 
 	init_scale = 50;
 	row = 0;
@@ -36,9 +36,9 @@ void populate_vertexes_in_map(t_vars *vars, t_vertex *vertex_arr)
 		{
 			temp = &(vertex_arr[col + row * vars->map.col_num]);
 			temp->real_coord = point_real_coord(
-				init_scale * col,
-				init_scale * temp->z,
-				-init_scale * (vars->map.row_num - row - 1));
+					init_scale * col,
+					init_scale * temp->z,
+					-(init_scale) * (vars->map.row_num - row - 1));
 			col++;
 		}
 		row++;

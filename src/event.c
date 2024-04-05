@@ -6,13 +6,13 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:20:47 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/04 20:19:39 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:47:57 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	isometric_handle_key(int key, t_vars *vars)
+int	iso_kb_key(int key, t_vars *vars)
 {
 	printf("%d pressed\n", key);
 	if (key == XK_Escape)
@@ -28,7 +28,7 @@ int	isometric_handle_key(int key, t_vars *vars)
 	return (0);
 }
 
-int	mouse_button(int button, int x, int y, t_vars *vars)
+int	iso_mouse_button(int button, int x, int y, t_vars *vars)
 {
 	x += 0;
 	y += 0;

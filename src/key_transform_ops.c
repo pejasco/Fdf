@@ -6,36 +6,36 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:25:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/04 17:46:55 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:22:24 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mx	build_translation_matrix_for_key(int key)
+t_mx	create_transl_mtx_hotkey(int key)
 {
 	t_mx	transl4x4;
 
-	transl4x4 = 
-		(t_mx){.row_num = 4,
+	transl4x4
+		= (t_mx){.row_num = 4,
 		.col_num = 4,
 		.entries = {
-		{1, 0, 0, 0},
-		{0, 1, 0, 0},
-		{0, 0, 1, 0},
-		{0, 0, 0, 1}}};
-		if (key == XK_Up)
-			transl4x4.entries[1][3] = 10;
-		else if (key == XK_Down)
-			transl4x4.entries[1][3] = -10;
-		else if (key == XK_Left)
-			transl4x4.entries[0][3] = -10;
-		else if (key == XK_Right)
-			transl4x4.entries[0][3] = 10;
-		return (transl4x4);
+	{1, 0, 0, 0},
+	{0, 1, 0, 0},
+	{0, 0, 1, 0},
+	{0, 0, 0, 1}}};
+	if (key == XK_Up)
+		transl4x4.entries[1][3] = 10;
+	else if (key == XK_Down)
+		transl4x4.entries[1][3] = -10;
+	else if (key == XK_Left)
+		transl4x4.entries[0][3] = -10;
+	else if (key == XK_Right)
+		transl4x4.entries[0][3] = 10;
+	return (transl4x4);
 }
 
-t_mx	build_scale_matrix_for_key(int key_or_button)
+t_mx	create_scale_mtx_hotkey(int key_or_button)
 {
 	t_mx	scale4x4;
 
@@ -46,7 +46,7 @@ t_mx	build_scale_matrix_for_key(int key_or_button)
 	return (scale4x4);
 }
 
-t_mx	build_rotation_matrix_for_key(int key)
+t_mx	create_rotate_mtx_hotkey(int key)
 {
 	t_mx	rotate4x4;
 

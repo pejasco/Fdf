@@ -6,13 +6,14 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:47:57 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/31 23:54:25 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:51:56 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_vertex	assign_data_to_vertex(int row, int col, int wid, t_int_strs *all_strs)
+t_vertex	assign_data_to_vertex(int row,
+	int col, int wid, t_int_strs *all_strs)
 {
 	t_vertex	vertex_struc;
 	int			col_with_size;
@@ -31,7 +32,6 @@ t_vertex	assign_data_to_vertex(int row, int col, int wid, t_int_strs *all_strs)
 	return (vertex_struc);
 }
 
-
 t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_vars *mlx)
 {
 	int			row;
@@ -45,15 +45,15 @@ t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_vars *mlx)
 		(mlx->map).col_num = all_strs->values_strs[0][0];
 	else
 		exit (1);
-	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex) 
-		* ((wid * (mlx->map).col_num)));
+	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex)
+			* ((wid * (mlx->map).col_num)));
 	while (row < wid)
 	{
 		col = 0;
-		while(col < (mlx->map).col_num)
+		while (col < (mlx->map).col_num)
 		{
-			vertex_arr[(mlx->map).col_num * row + col] = 
-			assign_data_to_vertex(row, col, wid, all_strs);
+			vertex_arr[(mlx->map).col_num * row + col]
+				= assign_data_to_vertex(row, col, wid, all_strs);
 			col++;
 		}
 		row++;

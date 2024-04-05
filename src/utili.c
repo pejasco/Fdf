@@ -6,72 +6,40 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 13:21:55 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/02 23:34:04 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:53:40 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void free_all(char **strs)
+void	free_all(char **strs)
 {
-  int   i;
+	int	i;
 
-  i = 0;
-  while(strs && strs[i])
-  {
-    free(strs[i]);
-    i++;
-  }
-  free(strs);
+	i = 0;
+	while (strs && strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
 }
 
-void free_all_int(int **strs)
+void	free_all_int(int **strs)
 {
-  int   i;
+	int	i;
 
-  i = 0;
-  while(strs && strs[i])
-  {
-    free(strs[i]);
-    i++;
-  }
-  free(strs);
+	i = 0;
+	while (strs && strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
 }
 
-void free_stru(t_int_strs *struc)
-{ 
-  free_all_int(struc->rgb_strs);
-  free_all_int(struc->values_strs);
-}
-
-
-/*
-void keep_coord(t_vertex *src, t_vertex *dest)
+void	free_stru(t_int_strs *struc)
 {
-	dest->x = src->x;
-	dest->x = src->y;
-	dest->x = src->z;
-	dest->RGB = src->RGB;
-	dest->wid = src->wid;
-	dest->len = src->len;
+	free_all_int(struc->rgb_strs);
+	free_all_int(struc->values_strs);
 }
-*/
-
-/*
-uint32_t hex2int(char *hex)
-{
-  uint32_t val = 0;
-  while (*hex)
-  {
-    uint8_t byte = *hex++;
-    if (byte >= '0' && byte <= '9') 
-        byte = byte - '0';
-    else if (byte >= 'a' && byte <= 'f')
-        byte = byte - 'a' + 10;
-    else if (byte >= 'A' && byte <= 'F')
-        byte = byte - 'A' + 10;
-    val = (val << 4) | (byte);
-  }  
-    return (val);
-}
-*/
