@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 14:46:42 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 16:12:49 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:14:00 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	multi_process(t_mx *product, t_mx *mxa, t_mx *mxb)
 void	mx_mult_error_msg(void)
 {
 	ft_putstr_fd(KRED, STDERR_FILENO);
-	ft_putstr_fd("WARNING:", STDERR_FILENO);
+	ft_putstr_fd("WARNING!!!:", STDERR_FILENO);
 	ft_putstr_fd(KYEL, STDERR_FILENO);
 	ft_putendl_fd("Incorrect number of coloumns and rows for matrix "
 		"multiplication", STDERR_FILENO);

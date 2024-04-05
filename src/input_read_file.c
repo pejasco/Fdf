@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 19:29:13 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/03 17:58:42 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:13:28 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int read_file(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Incorrect file name!");
+		ft_printf("Incorrect file name!!!");
 		return (-1);
 	}
 	return (fd);

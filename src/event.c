@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 16:20:47 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/04 18:44:34 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/04 20:19:39 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,12 @@ int	isometric_handle_key(int key, t_vars *vars)
 	return (0);
 }
 
-int	mouse_button(int button, t_vars *vars)
+int	mouse_button(int button, int x, int y, t_vars *vars)
 {
+	x += 0;
+	y += 0;
 	printf("%d pressed\n", button);
 	if (button == Button4 || button == Button5)
 		scale(vars, button);
-	return (0);
-}
-
-int my_scroll_hook(double ydelta, t_vars *vars)
-{
-	if (ydelta > 0)
-		scale(vars, ydelta);
-	else if (ydelta < 0)
-		scale(vars, ydelta);
 	return (0);
 }

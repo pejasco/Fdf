@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/04 18:43:29 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:12:34 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int		read_file_control(int ac, char **av, t_read_vars *read_vars)
 	read_vars->fd = read_file(av[1]);
 	read_vars->wid = 0;
 	if (ac !=2 || (read_vars->fd == -1))
+	{
+		printf("Incorrect Input!");
 		return (1);
+	}
 	read_vars->wid = find_wid(read_vars->fd);
 	close(read_vars->fd);
 	read_vars->fd = read_file(av[1]);
@@ -29,7 +32,7 @@ int		read_file_control(int ac, char **av, t_read_vars *read_vars)
 void	set_up_hooks(t_vars *vars)
 {
 	press_key_hook(vars->win_ptr, isometric_handle_key, vars);
-	mlx_mouse_hook(vars->win_ptr, my_scroll_hook, vars);
+	mlx_mouse_hook(vars->win_ptr, mouse_button, vars);
 }
 
 int		main(int ac, char **av)
@@ -39,9 +42,7 @@ int		main(int ac, char **av)
 	t_int_strs	all_strs;
 	t_vertex	*vertex_arr;
 	t_vars		vars;
-	int			i;
 
-	i = 0;
 	if (read_file_control(ac, av, &read_vars))
 		return (1);
 	all_lines = extract_line(read_vars.fd, read_vars.wid);
@@ -51,35 +52,6 @@ int		main(int ac, char **av)
 	vars.vertex_arr = vertex_arr;
 	window_handle(&vars);
 	transform_all_vertexes(&vars, mx_iso4x4()); //iso matrix * the coord(t_mx) of each vertex;
-	while(i < ((vars.vertex_arr[0]).wid * (vars.vertex_arr[0].len )))
-	{
-		printf("!!!######## %d+1 ########!!!\n", i);
-		printf("x is %f\n", vars.vertex_arr[i].x);
-		printf("y is %f\n", vars.vertex_arr[i].y);
-		printf("z is %f\n", vars.vertex_arr[i].z);
-		printf("RGB is %d\n", vars.vertex_arr[i].RGB);
-		printf("wid is %d\n", vars.vertex_arr[i].wid);
-		printf("len is %d\n", vars.vertex_arr[i].len);
-		printf("real_coord.row_num is %d\n", vars.vertex_arr[i].real_coord.row_num);
-		printf("real_coord.col_num is %d\n", vars.vertex_arr[i].real_coord.col_num);
-		printf("real_coord.entries[0][0] is %f\n", vars.vertex_arr[i].real_coord.entries[0][0]);
-		printf("real_coord.entries[0][1] is %f\n", vars.vertex_arr[i].real_coord.entries[0][1]);
-		printf("real_coord.entries[0][2] is %f\n", vars.vertex_arr[i].real_coord.entries[0][2]);
-		printf("real_coord.entries[0][3] is %f\n", vars.vertex_arr[i].real_coord.entries[0][3]);
-		printf("real_coord.entries[1][0] is %f\n", vars.vertex_arr[i].real_coord.entries[1][0]);
-		printf("real_coord.entries[1][1] is %f\n", vars.vertex_arr[i].real_coord.entries[1][1]);
-		printf("real_coord.entries[1][2] is %f\n", vars.vertex_arr[i].real_coord.entries[1][2]);
-		printf("real_coord.entries[1][3] is %f\n", vars.vertex_arr[i].real_coord.entries[1][3]);
-		printf("real_coord.entries[2][0] is %f\n", vars.vertex_arr[i].real_coord.entries[2][0]);
-		printf("real_coord.entries[2][1] is %f\n", vars.vertex_arr[i].real_coord.entries[2][1]);
-		printf("real_coord.entries[2][2] is %f\n", vars.vertex_arr[i].real_coord.entries[2][2]);
-		printf("real_coord.entries[2][3] is %f\n", vars.vertex_arr[i].real_coord.entries[2][3]);
-		printf("real_coord.entries[3][0] is %f\n", vars.vertex_arr[i].real_coord.entries[3][0]);
-		printf("real_coord.entries[3][1] is %f\n", vars.vertex_arr[i].real_coord.entries[3][1]);
-		printf("real_coord.entries[3][2] is %f\n", vars.vertex_arr[i].real_coord.entries[3][2]);
-		printf("real_coord.entries[3][3] is %f\n", vars.vertex_arr[i].real_coord.entries[3][3]);
-		i++;
-	}
 	ortho_model(&vars);
 	put_image_to_window_vars(&vars);
 	set_up_hooks(&vars);
@@ -243,3 +215,36 @@ int	main(int ac, char **av)
 		i++;
 	}
 	*/
+
+/*
+	while(i < ((vars.vertex_arr[0]).wid * (vars.vertex_arr[0].len )))
+	{
+		printf("!!!######## %d+1 ########!!!\n", i);
+		printf("x is %f\n", vars.vertex_arr[i].x);
+		printf("y is %f\n", vars.vertex_arr[i].y);
+		printf("z is %f\n", vars.vertex_arr[i].z);
+		printf("RGB is %d\n", vars.vertex_arr[i].RGB);
+		printf("wid is %d\n", vars.vertex_arr[i].wid);
+		printf("len is %d\n", vars.vertex_arr[i].len);
+		printf("real_coord.row_num is %d\n", vars.vertex_arr[i].real_coord.row_num);
+		printf("real_coord.col_num is %d\n", vars.vertex_arr[i].real_coord.col_num);
+		printf("real_coord.entries[0][0] is %f\n", vars.vertex_arr[i].real_coord.entries[0][0]);
+		printf("real_coord.entries[0][1] is %f\n", vars.vertex_arr[i].real_coord.entries[0][1]);
+		printf("real_coord.entries[0][2] is %f\n", vars.vertex_arr[i].real_coord.entries[0][2]);
+		printf("real_coord.entries[0][3] is %f\n", vars.vertex_arr[i].real_coord.entries[0][3]);
+		printf("real_coord.entries[1][0] is %f\n", vars.vertex_arr[i].real_coord.entries[1][0]);
+		printf("real_coord.entries[1][1] is %f\n", vars.vertex_arr[i].real_coord.entries[1][1]);
+		printf("real_coord.entries[1][2] is %f\n", vars.vertex_arr[i].real_coord.entries[1][2]);
+		printf("real_coord.entries[1][3] is %f\n", vars.vertex_arr[i].real_coord.entries[1][3]);
+		printf("real_coord.entries[2][0] is %f\n", vars.vertex_arr[i].real_coord.entries[2][0]);
+		printf("real_coord.entries[2][1] is %f\n", vars.vertex_arr[i].real_coord.entries[2][1]);
+		printf("real_coord.entries[2][2] is %f\n", vars.vertex_arr[i].real_coord.entries[2][2]);
+		printf("real_coord.entries[2][3] is %f\n", vars.vertex_arr[i].real_coord.entries[2][3]);
+		printf("real_coord.entries[3][0] is %f\n", vars.vertex_arr[i].real_coord.entries[3][0]);
+		printf("real_coord.entries[3][1] is %f\n", vars.vertex_arr[i].real_coord.entries[3][1]);
+		printf("real_coord.entries[3][2] is %f\n", vars.vertex_arr[i].real_coord.entries[3][2]);
+		printf("real_coord.entries[3][3] is %f\n", vars.vertex_arr[i].real_coord.entries[3][3]);
+		i++;
+	}
+
+*/
