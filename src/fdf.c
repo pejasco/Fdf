@@ -6,11 +6,12 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 14:19:03 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/05 14:58:48 by chuleung         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:00:18 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 
 int	read_file_control(int ac, char **av, t_read_vars *read_vars)
 {
@@ -28,12 +29,76 @@ int	read_file_control(int ac, char **av, t_read_vars *read_vars)
 		return (1);
 	return (0);
 }
-
-void	set_up_hooks(t_vars *vars)
+void set_up_hooks(t_vars *vars)
 {
-	press_key_hook(vars->win_ptr, iso_kb_key, vars);
-	mlx_mouse_hook(vars->win_ptr, iso_mouse_button, vars);
+    mlx_hook(vars->win_ptr, 2, 1L<<0, key_press, vars);
+    mlx_hook(vars->win_ptr, 3, 1L<<1, key_release, vars);
+    mlx_loop_hook(vars->mlx_ptr, continuous_update, vars);
+    mlx_mouse_hook(vars->win_ptr, iso_mouse_button, vars);
 }
+// void	set_up_hooks(t_vars *vars)
+// {
+// 	mlx_key_hook(vars->win_ptr, iso_kb_key, vars);
+// 	mlx_mouse_hook(vars->win_ptr, iso_mouse_button, vars);
+// }
+
+// int	main(int ac, char **av)
+// {
+//     t_read_vars	read_vars;
+//     char		**all_lines;
+//     t_int_strs	all_strs;
+//     t_vertex	*vertex_arr;
+//     t_vars		vars;
+
+//     printf("Start main\n");
+//     if (read_file_control(ac, av, &read_vars))
+//         return (1);
+//     printf("After read_file_control\n");
+
+//     all_lines = extract_line(read_vars.fd, read_vars.wid);
+//     if (!all_lines) { printf("extract_line failed\n"); return (1); }
+//     printf("After extract_line\n");
+
+//     input_mgt(&all_strs, all_lines, read_vars.wid);
+//     printf("After input_mgt\n");
+
+//     vertex_arr = vertex_create(&all_strs, read_vars.wid, &vars);
+//     if (!vertex_arr) { printf("vertex_create failed\n"); return (1); }
+//     printf("After vertex_create\n");
+
+//     put_vertexes_into_map(&vars, vertex_arr);
+//     printf("After put_vertexes_into_map\n");
+
+//     vars.vertex_arr = vertex_arr;
+//     printf("vertex_arr: %p\n", vars.vertex_arr);
+
+//     window_handle(&vars);
+//     printf("After window_handle\n");
+//     printf("mlx_ptr: %p, win_ptr: %p\n", vars.mlx_ptr, vars.win_ptr);
+
+//     transform_all_vertexes(&vars, mx_iso4x4());
+//     printf("After transform_all_vertexes\n");
+
+//     ortho_model(&vars);
+//     printf("After ortho_model\n");
+
+//     put_image_to_window_vars(&vars);
+//     printf("After put_image_to_window_vars\n");
+
+//     set_up_hooks(&vars);
+//     printf("After set_up_hooks\n");
+
+//     mlx_loop(vars.mlx_ptr);
+//     printf("After mlx_loop (should not reach here unless window closed)\n");
+
+//     window_close(&vars, vertex_arr, &all_strs, read_vars.fd);
+//     printf("After window_close\n");
+
+//     return (0);
+// }
+
+
+
 
 int	main(int ac, char **av)
 {

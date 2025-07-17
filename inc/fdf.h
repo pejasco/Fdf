@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:16:15 by chuleung          #+#    #+#             */
-/*   Updated: 2024/04/05 17:50:25 by chuleung         ###   ########.fr       */
+/*   Updated: 2025/07/17 15:10:13 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,9 @@ t_mx	create_transl_mtx_hotkey(int key);
 t_mx	create_scale_mtx_hotkey(int key_or_button);
 t_mx	create_rotate_mtx_hotkey(int key);
 void	transform_all_vertexes(t_vars *vars, t_mx transform);
+int		key_press(int keycode, t_vars *vars);
+int		key_release(int keycode, t_vars *vars);
+int		continuous_update(t_vars *vars);
 
 //matrice
 t_mx	mtxa_mult_mtxb(t_mx mtxa, t_mx mtxb);
