@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:12:10 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 22:50:12 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/03/21 19:46:45 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static size_t	get_str_count(char const *s, char d)
 		while (s[i] != d && s[i])
 			i++;
 	}
-	ft_printf("LH's split%d\n", sum);
+	//ft_printf("LH's split%d\n", sum);
 	return (sum);
 }
 

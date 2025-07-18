@@ -6,7 +6,7 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 19:15:54 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/21 23:21:17 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:50:14 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ char	*create_str_w_col_rgb(char *str_before_atoi)
 
 	str_aft_modi = NULL;
 	if (!whether_colors(str_before_atoi))
-		str_aft_modi= "ffffff";
+		str_aft_modi = "ffffff";
 	else if (whether_colors(str_before_atoi))
-		str_aft_modi = 
-			ft_strchr(str_before_atoi, ',') + 3;
-	//printf("This is ->>>>>%s\n", str_aft_modi);
+		str_aft_modi
+			= ft_strchr(str_before_atoi, ',') + 3;
 	return (str_aft_modi);
 }
 
@@ -34,14 +33,14 @@ char	**modify_strs_w_col_rgb(char **str_before_atoi, int len)
 	i = 0;
 	strs_aft_modi = (char **)malloc(sizeof(char *) * (len + 1));
 	if (strs_aft_modi == NULL)
-		return NULL;
+		return (NULL);
 	strs_aft_modi[len] = NULL;
-	while(str_before_atoi[i] && ft_isalnum(str_before_atoi[i][0]))
+	while (str_before_atoi[i] && ft_isalnum(str_before_atoi[i][0]))
 	{
 		strs_aft_modi[i] = create_str_w_col_rgb(str_before_atoi[i]);
 		i++;
 	}
-	return(strs_aft_modi);
+	return (strs_aft_modi);
 }
 
 int	*create_color_strs_w_col(char *all_lines)
@@ -61,10 +60,10 @@ int	*create_color_strs_w_col(char *all_lines)
 	creation_process_rgb(&values_str, strs_aft_modi, len);
 	free_all(strs_before_atoi);
 	free(strs_aft_modi);
-	return(values_str);
+	return (values_str);
 }
 
-int	**get_RGB_strs(char **all_lines, int width)
+int	**get_rgb_strs(char **all_lines, int width)
 {
 	int		**strs;
 	int		i;
@@ -72,10 +71,10 @@ int	**get_RGB_strs(char **all_lines, int width)
 	i = 0;
 	strs = (int **)malloc(sizeof(int *) * (width + 1));
 	strs[width] = NULL;
-	while (all_lines[i])	
+	while (all_lines[i])
 	{
-			strs[i] = create_color_strs_w_col(all_lines[i]);
-			i++;
+		strs[i] = create_color_strs_w_col(all_lines[i]);
+		i++;
 	}
 	return (strs);
 }

@@ -1,34 +1,39 @@
 NAME := fdf
 COMMON_FILES := \
 	argb.c \
-	bresenham.c \
-	bresenham_utils.c \
+	bsh.c\
+	compose_map.c \
 	coord_conversion.c \
-	events.c \
+	event.c \
+	ft_atoi_base.c\
 	funcs.c \
 	gradient.c \
-	helpers.c \
 	image.c \
-	key_hooks.c \
-	map.c \
-	map_utils.c \
-	matrix.c \
-	read_file.c \
-	render.c \
-	rotation.c \
-	transform.c \
-	transform_cavalier.c \
-	transform_isometric.c \
-	transform_utils.c
+	input_mgt_rgb.c \
+	input_mgt_rgb2.c \
+	input_mgt_val_wcol.c\
+	input_mgt_val.c\
+	input_mgt.c\
+	input_read_file.c\
+	key_transform_ops.c \
+	matrice.c \
+	ortho_render.c \
+	tran_rotation.c \
+	tran_scale.c \
+	transform_iso.c \
+	utili.c \
+	utili2.c \
+	vertex_create.c\
+	window.c
 SRC_DIR := src
 OBJ_DIR := build
 INC_DIR := inc
 
-FILES := main_isometric.c $(COMMON_FILES)
+FILES := fdf.c $(COMMON_FILES)
 SRC := $(addprefix $(SRC_DIR)/, $(FILES))
 OBJ := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
 
-FILES_BONUS := main_cavalier.c $(COMMON_FILES)
+FILES_BONUS := fdf.c $(COMMON_FILES)
 SRC_BONUS := $(addprefix $(SRC_DIR)/, $(FILES_BONUS))
 OBJ_BONUS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_BONUS))
 
@@ -52,12 +57,11 @@ all: $(NAME)
 $(NAME): $(OBJ) $(MLX_STT) $(FT_STT)
 	@rm -f bonus
 	$(CC) $(OBJ) $(MLX_STT) $(FT_STT) -I$(MLX_INC) -I$(FT_INC) -l Xext -l X11 -lm -lz -o $@ -I$(INC_DIR)
-	@echo "👏 Complete! 👏"
+	@echo "🥰🥰🥰🥰🥰🥰 Complete! 🥰🥰🥰🥰🥰"
 
 bonus: $(OBJ_BONUS) $(MLX_STT) $(FT_STT)
-	touch bonus
 	$(CC) $(OBJ_BONUS) $(MLX_STT) $(FT_STT) -I$(MLX_INC) -I$(FT_INC) -l Xext -l X11 -lm -lz -o $(NAME) -I$(INC_DIR)
-	@echo "👏 Bonus Complete! 👏"
+	@echo "🥰🥰🥰🥰🥰 Bonus Complete! 🥰🥰🥰🥰🥰"
 
 $(FT_STT):
 	$(MAKE) -C lib/libft

@@ -1,1 +1,11 @@
+gcc -g -I ../inc/ -I ../lib/libft/inc/ -I ../lib/minilibx-linux -L ../lib/libft/lib -L ../lib/minilibx-linux *.c -lft -lmlx -Wall -Wextra 
+-Werror -lX11 -lXext
+valgrind --leak-check=full ./a.out ./maps/test_maps/42X.fdf
+
+
+
 cc -g -I ../inc/ -I ../lib/libft/inc/ -I ../lib/minilibx-linux -L ../lib/libft/lib  -L ../lib/minilibx-linux init_mlx.c -lmlx -pg -Wall -Wextra -Werror -lX11 -lXext
+
+
+gcc -g -I ../inc/ -I ../lib/libft/inc/ -I ../lib/minilibx-linux -L ../lib/libft/lib -L ../lib/minilibx-linux *.c -lft -lmlx -Wall -Wextra -Werror -lX11 -lXext -lm
+

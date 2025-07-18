@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   image.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/03 14:16:57 by chuleung          #+#    #+#             */
+/*   Updated: 2024/04/05 14:56:45 by chuleung         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+void	supa_pixel_put(t_img *img_vars, t_px_coord coord, t_argb color)
+{
+	long				offset;
+
+	if (coord.x >= WIDTH || coord.x < 0 || coord.y >= HEIGHT || coord.y < 0)
+		return ;
+	offset = (img_vars->line_len * coord.y)
+		+ (coord.x * (img_vars->bits_per_pixel / 8));
+	*((unsigned int *)(offset + img_vars->img_pixels_ptr)) = color;
+}
+
+void	fill_image_with_color(t_img *img_vars, int color)
+{
+	t_px_coord	point;
+
+	if (!img_vars)
+		return ;
+	point = (t_px_coord){0};
+	while (point.x < WIDTH)
+	{
+		point.y = 0;
+		while (point.y < HEIGHT)
+		{
+			supa_pixel_put(img_vars, point, color);
+			point.y++;
+		}
+		point.x++;
+	}
+}

@@ -6,13 +6,14 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 17:47:57 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/21 20:10:21 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:51:56 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_vertex	assign_data_to_vertex(int row, int col, int wid, t_int_strs *all_strs)
+t_vertex	assign_data_to_vertex(int row,
+	int col, int wid, t_int_strs *all_strs)
 {
 	t_vertex	vertex_struc;
 	int			col_with_size;
@@ -26,29 +27,33 @@ t_vertex	assign_data_to_vertex(int row, int col, int wid, t_int_strs *all_strs)
 		vertex_struc.RGB = all_strs->rgb_strs[row][col_with_size];
 	vertex_struc.wid = wid;
 	vertex_struc.len = all_strs->values_strs[row][0];
+	vertex_struc.real_coord.col_num = vertex_struc.len;
+	vertex_struc.real_coord.col_num = vertex_struc.wid;
 	return (vertex_struc);
 }
 
-
-t_vertex	*vertex_create(t_int_strs *all_strs, int wid)
+t_vertex	*vertex_create(t_int_strs *all_strs, int wid, t_vars *mlx)
 {
 	int			row;
 	int			col;
-	int			len;
 	t_vertex	*vertex_arr;
 
 	row = 0;
 	col = 0;
-	len = all_strs->values_strs[0][0];
-	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex ) 
-		* ((wid * len)));
-	printf("hahahahahahahaha%d\n", (wid * len));
+	(mlx->map).row_num = wid;
+	if (all_strs->values_strs[0] != NULL && all_strs->values_strs != NULL)
+		(mlx->map).col_num = all_strs->values_strs[0][0];
+	else
+		exit (1);
+	vertex_arr = (t_vertex *)malloc(sizeof(t_vertex)
+			* ((wid * (mlx->map).col_num)));
 	while (row < wid)
 	{
 		col = 0;
-		while(col <= len)
+		while (col < (mlx->map).col_num)
 		{
-			vertex_arr[len * row + col] = assign_data_to_vertex(row, col, wid, all_strs);
+			vertex_arr[(mlx->map).col_num * row + col]
+				= assign_data_to_vertex(row, col, wid, all_strs);
 			col++;
 		}
 		row++;

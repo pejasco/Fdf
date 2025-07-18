@@ -6,13 +6,13 @@
 /*   By: chuleung <chuleung@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 19:22:29 by chuleung          #+#    #+#             */
-/*   Updated: 2024/03/18 19:25:12 by chuleung         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:32:29 by chuleung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void creation_process_rgb(int **ptrs_to_values_str, 
+void	creation_process_rgb(int **ptrs_to_values_str,
 	char **strs_aft_modi, int len)
 {
 	int		j;
@@ -23,16 +23,14 @@ void creation_process_rgb(int **ptrs_to_values_str,
 	k = 0;
 	(*ptrs_to_values_str) = (int *)malloc(sizeof(int) * (len + 1));
 	(*ptrs_to_values_str)[k++] = len;
-	//if (strs_aft_modi[j][0] == '0' || strs_aft_modi[j][0] == 'x')
-	//	j++;
-	while(strs_aft_modi[j])
+	while (strs_aft_modi[j])
 	{
 		temp = ft_atoi_base(strs_aft_modi[j++], "0123456789abcdef");
 		(*ptrs_to_values_str)[k++] = temp;
 	}
 }
 
-int whether_colors(char *char_strs)
+int	whether_colors(char *char_strs)
 {
 	int		i;
 
@@ -46,30 +44,16 @@ int whether_colors(char *char_strs)
 	return (0);
 }
 
-/*
-char	*fill_white_for_zero(void)
+int	find_comma(char *str)
 {
-	int		len;
-	char	*str_aft_modi;
+	int	i;
 
-	len = 6;
-	str_aft_modi = (char *)malloc(sizeof(char) * (len + 1));
-	str_aft_modi[len] = '\0';
-	ft_strlcpy(*(str_aft_modi), "FFFFFF", len + 1);
-	return (&str_aft_modi);
-}
-*/
-
-int find_comma(char *str)
-{
-  int   i;
-
-  i = 0;
-  while (str[i])
-  { 
-    if (str[i] == ',')
-      return (1);
-    i++;
-  }
-  return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+			return (1);
+		i++;
+	}
+	return (0);
 }
