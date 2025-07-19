@@ -56,7 +56,7 @@ The program reads map files containing elevation data and renders them as intera
 <h3>Quick Setup</h3>
 <p>Use the provided installation script to automatically install all dependencies:</p>
 
-<pre><code class="bash">./yo.sh
+<pre><code class="bash">./config.sh
 </code></pre>
 
 <p>This script will:</p>
@@ -68,7 +68,8 @@ The program reads map files containing elevation data and renders them as intera
 </ul>
 
 <h3>Manual Compilation</h3>
-<pre><code># Compile the project
+<pre><code>
+# Compile the project
 make
 
 # Compile with bonus features
@@ -88,19 +89,19 @@ make re
 
 <h3>🧠 Keyboard Controls</h3>
 <ul>
-  <li><strong>ESC</strong>: Exit program <br/><img src="./gif/demo/exit.gif" width="300" alt="Exit program demonstration" /></li>
-  <li><strong>Arrow Keys</strong>: Move/translate the wireframe <br/><img src="./gif/demo/movement.gif" width="300" alt="Wireframe movement demonstration" /></li>
-  <li><strong>I / Scroll Up</strong>: Zoom in <br/><img src="./gif/demo/zoom_in.gif" width="300" alt="Zoom in demonstration" /></li>
-  <li><strong>U / Scroll Down</strong>: Zoom out <br/><img src="./gif/demo/zoom_out.gif" width="300" alt="Zoom out demonstration" /></li>
-  <li><strong>Q / E</strong>: Rotate Y-axis <br/><img src="./gif/demo/rotate_y.gif" width="300" alt="Rotate Y-axis demonstration" /></li>
-  <li><strong>W / X</strong>: Rotate X-axis <br/><img src="./gif/demo/rotate_x.gif" width="300" alt="Rotate X-axis demonstration" /></li>
-  <li><strong>A / D</strong>: Rotate Z-axis <br/><img src="./gif/demo/rotate_z.gif" width="300" alt="Rotate Z-axis demonstration" /></li>
+  <li><strong>ESC</strong>: Exit program <br/><img src="./gif/control/exit.gif" width="300" alt="Exit program demonstration" /></li>
+  <li><strong>Arrow Keys</strong>: Move/translate the wireframe <br/><img src="./gif/control/move.gif" width="300" alt="Wireframe movement demonstration" /></li>
+  <li><strong>I </strong>: Zoom in <br/><img src="./gif/control/in.gif" width="300" alt="Zoom in demonstration" /></li>
+  <li><strong>O </strong>: Zoom out <br/><img src="./gif/control/out.gif" width="300" alt="Zoom out demonstration" /></li>
+  <li><strong>Q / E</strong>: Rotate Y-axis <br/><img src="./gif/control/y.gif" width="300" alt="Rotate Y-axis demonstration" /></li>
+  <li><strong>W / S</strong>: Rotate X-axis <br/><img src="./gif/control/x.gif" width="300" alt="Rotate X-axis demonstration" /></li>
+  <li><strong>A / D</strong>: Rotate Z-axis <br/><img src="./gif/control/z.gif" width="300" alt="Rotate Z-axis demonstration" /></li>
 </ul>
 
 <h3>🖱️ Mouse Controls</h3>
 <ul>
-  <li><strong>Scroll Up</strong>: Zoom in <br/><img src="./gif/demo/mouse_zoom_in.gif" width="300" alt="Mouse zoom in demonstration" /></li>
-  <li><strong>Scroll Down</strong>: Zoom out <br/><img src="./gif/demo/mouse_zoom_out.gif" width="300" alt="Mouse zoom out demonstration" /></li>
+  <li><strong>Scroll Up</strong>: Zoom in <br/><img src="./gif/control/m_in.gif" width="300" alt="Mouse zoom in demonstration" /></li>
+  <li><strong>Scroll Down</strong>: Zoom out <br/><img src="./gif/control/m_out.gif" width="300" alt="Mouse zoom out demonstration" /></li>
 </ul>
 
 <h2 id="map-format">🗺️ Map Format</h2>
