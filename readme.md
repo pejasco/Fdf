@@ -93,8 +93,8 @@ make re
   <li><strong>Arrow Keys</strong>: Move/translate the wireframe <br/><img src="./gif/control/move.gif" width="300" alt="Wireframe movement demonstration" /></li>
   <li><strong>I </strong>: Zoom in <br/><img src="./gif/control/in.gif" width="300" alt="Zoom in demonstration" /></li>
   <li><strong>O </strong>: Zoom out <br/><img src="./gif/control/out.gif" width="300" alt="Zoom out demonstration" /></li>
-  <li><strong>Q / E</strong>: Rotate Y-axis <br/><img src="./gif/control/y.gif" width="300" alt="Rotate Y-axis demonstration" /></li>
   <li><strong>W / S</strong>: Rotate X-axis <br/><img src="./gif/control/x.gif" width="300" alt="Rotate X-axis demonstration" /></li>
+  <li><strong>Q / E</strong>: Rotate Y-axis <br/><img src="./gif/control/y.gif" width="300" alt="Rotate Y-axis demonstration" /></li>
   <li><strong>A / D</strong>: Rotate Z-axis <br/><img src="./gif/control/z.gif" width="300" alt="Rotate Z-axis demonstration" /></li>
 </ul>
 
