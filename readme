@@ -1,72 +1,77 @@
-# FDF - Wireframe 3D Viewer
+<h1 align="center">FDF - Wireframe 3D Viewer</h1>
+<p align="center">A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric and orthographic rendering.</p>
 
-A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric and orthographic rendering.
+<h2 align="center">🎥 Demo</h2>
+<p align="center">
+  <img src="./gif/demo/42_color.gif" width="45%" alt="42 Color Demo" />
+  <img src="./gif/demo/42_org.gif" width="45%" alt="42 Org Demo" /><br />
+  <img src="./gif/demo/complex.gif" width="45%" alt="Complex Demo" />
+  <img src="./gif/demo/inverted.gif" width="45%" alt="Inverted Demo" />
+</p>
 
-## Demo
+<hr/>
 
-| ![42_color](./gif/demo/42_color.gif) | ![42_org](./gif/demo/42_org.gif) |
-|--------------------------------------|----------------------------------|
-| ![complex](./gif/demo/complex.gif)   | ![inverted](./gif/demo/inverted.gif) |
+<h2>📌 Table of Contents</h2>
+<ul>
+  <li><a href="#about">About</a></li>
+  <li><a href="#features">Features</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#controls">Controls</a></li>
+  <li><a href="#map-format">Map Format</a></li>
+  <li><a href="#project-structure">Project Structure</a></li>
+  <li><a href="#git-setup">Git Setup</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#license">License</a></li>
+</ul>
 
-## Table of Contents
+<hr/>
 
-- [About](#about)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Controls](#controls)
-- [Map Format](#map-format)
-- [Project Structure](#project-structure)
-- [Git Setup](#git-setup)
-- [Contributing](#contributing)
-- [License](#license)
+<h2 id="about">📖 About</h2>
+<p>
+FDF (<em>Fil de Fer</em>, French for "wireframe") is a graphics project that creates 3D wireframe representations of 2D heightmaps.
+The program reads map files containing elevation data and renders them as interactive 3D visualizations using the MinilibX graphics library.
+</p>
+<p>This project demonstrates:</p>
+<ul>
+  <li>3D mathematics and transformations</li>
+  <li>Isometric and orthographic projections</li>
+  <li>Line drawing algorithms (Bresenham's)</li>
+  <li>Color interpolation and gradients</li>
+  <li>Event handling and user interaction</li>
+</ul>
 
-## About
+<h2 id="features">✨ Features</h2>
+<ul>
+  <li><strong>Multiple Projection Modes</strong>: Isometric and orthographic views</li>
+  <li><strong>Interactive Controls</strong>: Rotate, scale, translate wireframes in real time</li>
+  <li><strong>Color Support</strong>: Heightmaps with smooth color gradients</li>
+  <li><strong>Smooth Rendering</strong>: Optimized lines and anti-aliasing</li>
+  <li><strong>Dynamic Transformations</strong>: Real-time model manipulation</li>
+  <li><strong>Multiple Map Support</strong>: Compatible with various heightmap formats</li>
+</ul>
 
-FDF (Fil de Fer, French for "wireframe") is a graphics project that creates 3D wireframe representations of 2D heightmaps. The program reads map files containing elevation data and renders them as interactive 3D visualizations using the MinilibX graphics library.
+<h2 id="installation">⚙️ Installation</h2>
 
-This project demonstrates:
-- 3D mathematics and transformations
-- Isometric and orthographic projections
-- Line drawing algorithms (Bresenham's algorithm)
-- Color interpolation and gradients
-- Event handling and user interaction
+<h3>Quick Setup</h3>
+<p>Use the provided installation script to automatically install all dependencies:</p>
 
-## Features
+<pre><code class="bash">./yo.sh
+</code></pre>
 
-- **Multiple Projection Modes**: Switch between isometric and orthographic views  
-- **Interactive Controls**: Rotate, scale, and translate the wireframe in real-time  
-- **Color Support**: Display colored heightmaps with smooth gradients  
-- **Smooth Rendering**: Optimized line drawing with anti-aliasing  
-- **Dynamic Transformations**: Real-time manipulation of 3D models  
-- **Multiple Map Support**: Load various heightmap formats  
+<p>This script will:</p>
+<ul>
+  <li>Update your system packages</li>
+  <li>Install build tools (GCC, Make)</li>
+  <li>Install X11 development libraries</li>
+  <li>Clone and set up the MinilibX library</li>
+</ul>
 
-## Installation
-
-### Quick Setup
-
-Use the provided installation script to automatically install all dependencies:
-
-```bash
-# Run the installation script
-./yo.sh
-```
-
-This script will:
-- Update your system packages
-- Install build tools (GCC, Make)
-- Install X11 development libraries
-- Clone and set up MinilibX library
-
-### Manual Compilation
-
-After running the installation script, compile the project:
-
-```bash
-# Compile the project
+<h3>Manual Compilation</h3>
+<pre><code># Compile the project
 make
 
-# Or compile with bonus features
+# Compile with bonus features
 make bonus
 
 # Clean build files
@@ -77,76 +82,48 @@ make fclean
 
 # Rebuild everything
 make re
-```
+</code></pre>
 
-## Controls
+<h2 id="controls">🎮 Controls</h2>
 
-### Keyboard Controls
+<h3>🧠 Keyboard Controls</h3>
+<ul>
+  <li><strong>ESC</strong>: Exit program <br/><img src="./gif/demo/exit.gif" width="300" alt="Exit program demonstration" /></li>
+  <li><strong>Arrow Keys</strong>: Move/translate the wireframe <br/><img src="./gif/demo/movement.gif" width="300" alt="Wireframe movement demonstration" /></li>
+  <li><strong>I / Scroll Up</strong>: Zoom in <br/><img src="./gif/demo/zoom_in.gif" width="300" alt="Zoom in demonstration" /></li>
+  <li><strong>U / Scroll Down</strong>: Zoom out <br/><img src="./gif/demo/zoom_out.gif" width="300" alt="Zoom out demonstration" /></li>
+  <li><strong>Q / E</strong>: Rotate Y-axis <br/><img src="./gif/demo/rotate_y.gif" width="300" alt="Rotate Y-axis demonstration" /></li>
+  <li><strong>W / X</strong>: Rotate X-axis <br/><img src="./gif/demo/rotate_x.gif" width="300" alt="Rotate X-axis demonstration" /></li>
+  <li><strong>A / D</strong>: Rotate Z-axis <br/><img src="./gif/demo/rotate_z.gif" width="300" alt="Rotate Z-axis demonstration" /></li>
+</ul>
 
-- **ESC**: Exit program
-  
-  ![Exit Demo](./gifs/exit.gif)
+<h3>🖱️ Mouse Controls</h3>
+<ul>
+  <li><strong>Scroll Up</strong>: Zoom in <br/><img src="./gif/demo/mouse_zoom_in.gif" width="300" alt="Mouse zoom in demonstration" /></li>
+  <li><strong>Scroll Down</strong>: Zoom out <br/><img src="./gif/demo/mouse_zoom_out.gif" width="300" alt="Mouse zoom out demonstration" /></li>
+</ul>
 
-- **Arrow Keys**: Move/translate the wireframe
-  
-  ![Movement Demo](./gifs/movement.gif)
+<h2 id="map-format">🗺️ Map Format</h2>
+<p>FDF accepts heightmap files like this:</p>
 
-- **I / Mouse Scroll Up**: Zoom in
-  
-  ![Zoom In Demo](./gifs/zoom_in.gif)
+<pre><code>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 10 10 0 0 10 10 0 0 0 10 10 10 10 10 0 0 0
+0 0 10 10 0 0 10 10 0 0 0 0 0 0 0 10 10 0 0
+0 0 10 10 0 0 10 10 0 0 0 0 0 0 0 10 10 0 0
+0 0 10 10 10 10 10 10 0 0 0 0 10 10 10 10 0 0 0
+0 0 0 10 10 10 10 10 0 0 0 10 10 0 0 0 0 0 0
+0 0 0 0 0 0 10 10 0 0 0 10 10 0 0 0 0 0 0
+0 0 0 0 0 0 10 10 0 0 0 10 10 10 10 10 10 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+</code></pre>
 
-- **U / Mouse Scroll Down**: Zoom out
-  
-  ![Zoom Out Demo](./gifs/zoom_out.gif)
+<p><strong>With Colors:</strong> You can add hexadecimal color codes like this:</p>
 
-- **Q / E**: Rotate around Y-axis
-  
-  ![Y-Axis Rotation Demo](./gifs/rotate_y.gif)
+<pre><code>0 0 0,0xFFFFFF 0 0
+0 0 10,0xFF0000 10 0 0
+0 0 10 10 0 0
+</code></pre>
 
-- **W / X**: Rotate around X-axis
-  
-  ![X-Axis Rotation Demo](./gifs/rotate_x.gif)
-
-- **A / D**: Rotate around Z-axis
-  
-  ![Z-Axis Rotation Demo](./gifs/rotate_z.gif)
-
-### Mouse Controls
-
-- **Mouse Scroll Up**: Zoom in
-  
-  ![Mouse Zoom In Demo](./gifs/mouse_zoom_in.gif)
-
-- **Mouse Scroll Down**: Zoom out
-  
-  ![Mouse Zoom Out Demo](./gifs/mouse_zoom_out.gif)
-
-## Map Format
-
-FDF accepts heightmap files with the following format:
-
-```
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10  0  0  0
-0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
-0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
-0  0 10 10 10 10 10 10  0  0  0  0 10 10 10 10  0  0  0
-0  0  0 10 10 10 10 10  0  0  0 10 10  0  0  0  0  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10  0  0  0  0  0  0
-0  0  0  0  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
-```
-
-### With Colors
-Colors can be specified in hexadecimal format:
-```
-0  0  0,0xFFFFFF  0  0
-0  0 10,0xFF0000 10  0  0
-0  0 10 10  0  0
-```
-
-**Made by CF Leung**
-
-*Last updated: July 2025*
+<p><strong>Made by CF Leung</strong></p>
+<p><em>Last updated: July 2025</em></p>
