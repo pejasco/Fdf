@@ -1,0 +1,152 @@
+# FDF - Wireframe 3D Viewer
+
+A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric and orthographic rendering.
+
+## Demo
+
+![Demo 1](./gif/demo/42_color.gif) ![Demo 2](./demo/42_org.gif)
+
+![Demo 3](./demo/complex.gif) ![Demo 4](./demo/inverted.gif)
+
+## Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Controls](#controls)
+- [Map Format](#map-format)
+- [Project Structure](#project-structure)
+- [Git Setup](#git-setup)
+- [Contributing](#contributing)
+- [License](#license)
+
+## About
+
+FDF (Fil de Fer, French for "wireframe") is a graphics project that creates 3D wireframe representations of 2D heightmaps. The program reads map files containing elevation data and renders them as interactive 3D visualizations using the MinilibX graphics library.
+
+This project demonstrates:
+- 3D mathematics and transformations
+- Isometric and orthographic projections
+- Line drawing algorithms (Bresenham's algorithm)
+- Color interpolation and gradients
+- Event handling and user interaction
+
+## Features
+
+- **Multiple Projection Modes**: Switch between isometric and orthographic views
+- **Interactive Controls**: Rotate, scale, and translate the wireframe in real-time
+- **Color Support**: Display colored heightmaps with smooth gradients
+- **Smooth Rendering**: Optimized line drawing with anti-aliasing
+- **Dynamic Transformations**: Real-time manipulation of 3D models
+- **Multiple Map Support**: Load various heightmap formats
+
+## Installation
+
+### Quick Setup
+
+Use the provided installation script to automatically install all dependencies:
+
+```bash
+# Run the installation script
+./yo.sh
+```
+
+This script will:
+- Update your system packages
+- Install build tools (GCC, Make)
+- Install X11 development libraries
+- Clone and set up MinilibX library
+
+### Manual Compilation
+
+After running the installation script, compile the project:
+
+```bash
+# Compile the project
+make
+
+# Or compile with bonus features
+make bonus
+
+# Clean build files
+make clean
+
+# Remove all generated files
+make fclean
+
+# Rebuild everything
+make re
+```
+
+## Controls
+
+### Keyboard Controls
+
+- **ESC**: Exit program
+  
+  ![Exit Demo](./gifs/exit.gif)
+
+- **Arrow Keys**: Move/translate the wireframe
+  
+  ![Movement Demo](./gifs/movement.gif)
+
+- **I / Mouse Scroll Up**: Zoom in
+  
+  ![Zoom In Demo](./gifs/zoom_in.gif)
+
+- **U / Mouse Scroll Down**: Zoom out
+  
+  ![Zoom Out Demo](./gifs/zoom_out.gif)
+
+- **Q / E**: Rotate around Y-axis
+  
+  ![Y-Axis Rotation Demo](./gifs/rotate_y.gif)
+
+- **W / X**: Rotate around X-axis
+  
+  ![X-Axis Rotation Demo](./gifs/rotate_x.gif)
+
+- **A / D**: Rotate around Z-axis
+  
+  ![Z-Axis Rotation Demo](./gifs/rotate_z.gif)
+
+### Mouse Controls
+
+- **Mouse Scroll Up**: Zoom in
+  
+  ![Mouse Zoom In Demo](./gifs/mouse_zoom_in.gif)
+
+- **Mouse Scroll Down**: Zoom out
+  
+  ![Mouse Zoom Out Demo](./gifs/mouse_zoom_out.gif)
+
+## Map Format
+
+FDF accepts heightmap files with the following format:
+
+```
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10  0  0  0
+0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
+0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0
+0  0 10 10 10 10 10 10  0  0  0  0 10 10 10 10  0  0  0
+0  0  0 10 10 10 10 10  0  0  0 10 10  0  0  0  0  0  0
+0  0  0  0  0  0 10 10  0  0  0 10 10  0  0  0  0  0  0
+0  0  0  0  0  0 10 10  0  0  0 10 10 10 10 10 10  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+```
+
+### With Colors
+Colors can be specified in hexadecimal format:
+```
+0  0  0,0xFFFFFF  0  0
+0  0 10,0xFF0000 10  0  0
+0  0 10 10  0  0
+```
+
+**Made by CF Leung**
+
+*Last updated: July 2025*

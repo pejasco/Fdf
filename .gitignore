@@ -1,0 +1,62 @@
+# Build files
+build/
+*.o
+*.a
+fdf
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.*.swp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# MinilibX specific
+lib/minilibx-linux/obj/
+lib/minilibx-linux/libmlx.a
+lib/minilibx-linux/libmlx_Linux.a
+
+# Custom library builds
+lib/libft/lib/libft.a
+lib/libft/obj/
