@@ -4,9 +4,9 @@ A 3D wireframe visualization program that transforms 2D heightmaps into beautifu
 
 ## Demo
 
-![Demo 1](./gif/demo/42_color.gif) ![Demo 2](./demo/42_org.gif)
-
-![Demo 3](./demo/complex.gif) ![Demo 4](./demo/inverted.gif)
+| ![42_color](./gif/demo/42_color.gif) | ![42_org](./gif/demo/42_org.gif) |
+|--------------------------------------|----------------------------------|
+| ![complex](./gif/demo/complex.gif)   | ![inverted](./gif/demo/inverted.gif) |
 
 ## Table of Contents
 
@@ -34,12 +34,12 @@ This project demonstrates:
 
 ## Features
 
-- **Multiple Projection Modes**: Switch between isometric and orthographic views
-- **Interactive Controls**: Rotate, scale, and translate the wireframe in real-time
-- **Color Support**: Display colored heightmaps with smooth gradients
-- **Smooth Rendering**: Optimized line drawing with anti-aliasing
-- **Dynamic Transformations**: Real-time manipulation of 3D models
-- **Multiple Map Support**: Load various heightmap formats
+- **Multiple Projection Modes**: Switch between isometric and orthographic views  
+- **Interactive Controls**: Rotate, scale, and translate the wireframe in real-time  
+- **Color Support**: Display colored heightmaps with smooth gradients  
+- **Smooth Rendering**: Optimized line drawing with anti-aliasing  
+- **Dynamic Transformations**: Real-time manipulation of 3D models  
+- **Multiple Map Support**: Load various heightmap formats  
 
 ## Installation
 
