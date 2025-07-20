@@ -1,5 +1,5 @@
 <h1 align="center">FDF - Wireframe 3D Viewer</h1>
-<p align="center">A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric and orthographic rendering.</p>
+<p align="center">A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric rendering.</p>
 
 <h2 align="center">🎥 Demo</h2>
 <p align="center">
