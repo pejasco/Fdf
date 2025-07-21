@@ -1,7 +1,7 @@
 <h1 align="center">FDF - Wireframe 3D Viewer</h1>
 <p align="center">A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric rendering.</p>
 
-<h2 align="center">🎥 Demo</h2>
+<h2>🎥 Demo</h2>
 <p align="center">
   <img src="./gif/demo/42_color.gif" width="45%" alt="42 Color Demo" />
   <img src="./gif/demo/42_org.gif" width="45%" alt="42 Org Demo" /><br />
