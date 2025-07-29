@@ -1,7 +1,7 @@
 <h1 align="center">FDF - Wireframe 3D Viewer</h1>
-<p align="center">A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric rendering.</p>
+<p align="center">A 3D wireframe visualization program that transforms 2D heightmaps into beautiful 3D projections using isometric and orthographic rendering.</p>
 
-<h2>🎥 Demo</h2>
+<h2 align="center">🎥 Demo</h2>
 <p align="center">
   <img src="./gif/demo/42_color.gif" width="45%" alt="42 Color Demo" />
   <img src="./gif/demo/42_org.gif" width="45%" alt="42 Org Demo" /><br />
@@ -84,6 +84,19 @@ make fclean
 # Rebuild everything
 make re
 </code></pre>
+
+<h2 id="usage">📝 Usage</h2>
+
+<p>To run the program, use the following command with your desired map file:</p>
+
+<pre><code>
+./fdf maps/pyramide_col.fdf
+</code></pre>
+
+<p>
+Replace <code>maps/pyramide_col.fdf</code> with the path to any supported map file.<br>
+Example map files are located in the <code>maps/</code> directory.
+</p>
 
 <h2 id="controls">🎮 Controls</h2>
 
