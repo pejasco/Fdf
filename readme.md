@@ -36,7 +36,7 @@ The program reads map files containing elevation data and renders them as intera
 <p>This project demonstrates:</p>
 <ul>
   <li>3D mathematics and transformations</li>
-  <li>Isometric and orthographic projections</li>
+  <li>Isometric projections</li>
   <li>Line drawing algorithms (Bresenham's)</li>
   <li>Color interpolation and gradients</li>
   <li>Event handling and user interaction</li>
