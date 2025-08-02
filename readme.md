@@ -17,12 +17,13 @@
   <li><a href="#features">Features</a></li>
   <li><a href="#installation">Installation</a></li>
   <li><a href="#usage">Usage</a></li>
-  <li><a href="#controls">Controls</a></li>
+  <li><a href="#controls">Controls</a>
+    <ul>
+      <li><a href="#keyboard-controls">Keyboard Controls</a></li>
+      <li><a href="#mouse-controls">Mouse Controls</a></li>
+    </ul>
+  </li>
   <li><a href="#map-format">Map Format</a></li>
-  <li><a href="#project-structure">Project Structure</a></li>
-  <li><a href="#git-setup">Git Setup</a></li>
-  <li><a href="#contributing">Contributing</a></li>
-  <li><a href="#license">License</a></li>
 </ul>
 
 <hr/>
